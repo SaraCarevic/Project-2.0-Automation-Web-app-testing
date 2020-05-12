@@ -5,7 +5,7 @@
     <classes>
       <class name="page.tests.OpenPageShould">
         <methods>
-          <include name="f"/>
+          <include name="openRecoveryProfile"/>
         </methods>
       </class> <!-- page.tests.OpenPageShould -->
     </classes>

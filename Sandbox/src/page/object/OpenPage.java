@@ -9,7 +9,7 @@ public class OpenPage {
 	WebDriver driver;
 	Map<String, String> urls;
 	
-	private static final String LOGINPAGE = "SANDBOXLOGINPAGE";		
+	private static final String SANDBOXLOGINPAGE = "SANDBOXLOGINPAGE";		
 	private static final String FORGOTPASSWORD = "FORGOTPASSWORDPAGE";
 	private static final String URLREGISTRATIONPAGE = "SIGNUPPAGE";
 	private static final String URLCHECKOUT = "CHECKOUTPAGE";
@@ -24,12 +24,30 @@ public class OpenPage {
 	
 	// method to open LoginPage
 	public void openLogin(WebDriver driver) {
-		driver.get(urls.get(LOGINPAGE));
+		driver.get(urls.get(SANDBOXLOGINPAGE));
+	}
+	
+	public String getUrlLogin() {
+		String url = urls.get(SANDBOXLOGINPAGE);
+		return url;
 	}
 	
 	// method to open RecoveryProflePage
 	public void openRecoveryProfile(WebDriver driver) {
 		driver.get(urls.get(FORGOTPASSWORD));
+	}
+	
+/*	public String getUrlForgotPassword() {
+		String url = urls.get(FORGOTPASSWORD);
+		return url;
+	}*/
+	public String getAllUrls() {
+		String exit = "";
+		for (String i : urls.values()) {
+			exit += i;
+			System.out.println(i);
+		}
+		return exit;
 	}
 	
 	// method to open RegistrationPage

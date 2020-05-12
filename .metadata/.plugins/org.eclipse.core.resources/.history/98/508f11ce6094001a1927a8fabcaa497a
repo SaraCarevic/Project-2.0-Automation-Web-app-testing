@@ -1,0 +1,9 @@
+package page.tests;
+
+public class RegistrationShould {
+
+	@Test
+	public void f() {
+
+	}
+}
