@@ -3,11 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="page.tests.HeaderShould">
+      <class name="page.tests.RecoveryPageShould">
         <methods>
-          <include name="haveLogo"/>
+          <include name="have"/>
+          <include name="recoverProfile"/>
         </methods>
-      </class> <!-- page.tests.HeaderShould -->
+      </class> <!-- page.tests.RecoveryPageShould -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

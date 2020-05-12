@@ -13,7 +13,6 @@ public class RecoveryProfilePage {
 	private static final String TXTUSERNAME = "TXTUSERNAMERESETPAGE";
 	private static final String BTNEMAIL = "BTNEMAILRESETPAGE";
 	private static final String LINKLOGIN = "LINKLOGINRESETPAGE";
-	private static final String BTNCONFIRM = "BTNCONFIRMLOGINRESETPAGE";
 
 	// constructor
 	public RecoveryProfilePage(WebDriver driver, Map<String, String> xPaths) {
@@ -26,11 +25,8 @@ public class RecoveryProfilePage {
 		driver.findElement(By.xpath(xPaths.get(TXTUSERNAME))).sendKeys(key);
 	}
 	public String getXPathUsername() {
-		String paths = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(TXTUSERNAME)) paths = xPaths.get(i);
-		}		
-		return paths;
+		String xpath = xPaths.get(TXTUSERNAME);
+		return xpath;
 	}
 
 	// method to click on the button "Send Reset Email"
@@ -38,11 +34,8 @@ public class RecoveryProfilePage {
 		driver.findElement(By.xpath(xPaths.get(BTNEMAIL))).click();
 	}
 	public String getXPathEmail() {
-		String paths = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(BTNEMAIL)) paths = xPaths.get(i);
-		}		
-		return paths;
+		String xpath = xPaths.get(BTNEMAIL);
+		return xpath;
 	}
 
 	// method to click on the link "Login" that will send us back on the LoginPage
@@ -50,22 +43,8 @@ public class RecoveryProfilePage {
 		driver.findElement(By.xpath(xPaths.get(LINKLOGIN))).click();
 	}
 	public String getXPathLogIn() {
-		String paths = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(LINKLOGIN)) paths = xPaths.get(i);
-		}		
-		return paths;
+		String xpath = xPaths.get(LINKLOGIN);
+		return xpath;
 	}
 
-	// method to click on the button to get to the login form after email to recover profile sent
-	public void clickConfirm() {
-		driver.findElement(By.xpath(xPaths.get(BTNCONFIRM))).click();
-	}
-	public String getXPathConfirm() {
-		String paths = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(BTNCONFIRM)) paths = xPaths.get(i);
-		}		
-		return paths;
-	}
 }

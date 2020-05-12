@@ -10,7 +10,6 @@ RESETPASSWORD~PAGE
 TXTUSERNAMERESETPAGE~//input[@placeholder='Username']
 BTNEMAILRESETPAGE~//input[@class='btn blue']
 LINKLOGINRESETPAGE~//a[contains(text(),'Log in')]
-BTNCONFIRMLOGINRESETPAGE~//a[@id='confirm-login']
 SIGNUP~PAGE
 TXTUSERNAMESIGNUPPAGE~//a[contains(text(),'Privacy Policy')]
 TXTEMAILSIGNUPPAGE~//input[@id='email']
