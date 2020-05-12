@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 
 public class RegistrationPage {
 
-	WebDriver driver;
-	Map<String, String> xPaths;
+	private static WebDriver driver;
+	private static Map<String, String> xPaths;
 	
 	private static final String TXTUSERNAME = "TXTUSERNAMESIGNUPPAGE";
 	private static final String TXTEMAIL = "TXTEMAILSIGNUPPAGE";
@@ -29,89 +29,110 @@ public class RegistrationPage {
 	private static final String LINKPRIVAYPOLICYFOOTER = "LINKPRIVACYPOLICYFOOTERSIGNUPPAGE";
 
 	// constructor
+	@SuppressWarnings("static-access")
 	public RegistrationPage(WebDriver driver, Map<String, String> xPaths) {
 		this.driver = driver;
 		this.xPaths = xPaths;
 	}
 	
 	// method to input User name
-	public void typeUsername(String key) {
+	public static void typeUsername(String key) {
 		driver.findElement(By.xpath(xPaths.get(TXTUSERNAME))).sendKeys(key);
 	}
 	
 	// method to input E-mail
-	public void typeEmail(String key) {
+	public static void typeEmail(String key) {
 		driver.findElement(By.xpath(xPaths.get(TXTEMAIL))).sendKeys(key);
 	}	
 	
 	// method to input Password
-	public void typePassword(String key) {
+	public static void typePassword(String key) {
 		driver.findElement(By.xpath(xPaths.get(TXTPASSWORD))).sendKeys(key);
 	}	
 	
 	// method to input Confirm Password
-	public void typeCofirmPassword(String key) {
+	public static void typeCofirmPassword(String key) {
 		driver.findElement(By.xpath(xPaths.get(TXTCONFIRMPASSWORD))).sendKeys(key);
 	}
 	
 	// method to click on the button "Tell us about yourself" and pick out "I have a web site"
-	public void chooseHaveWebsite(String key) {
+	public static void chooseHaveWebsite(String key) {
 		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
 		driver.findElement(By.xpath(xPaths.get(DBOXHAVEWEBSITE))).click();	
 		driver.findElement(By.xpath(xPaths.get(DBOXTXTWEBSITEURL))).sendKeys(key);
 	}
 
 	// method to click on the button "Tell us about yourself" and pick out "I don't have a web site"
-	public void chooseDontHaveWebsite() {
+	public static void chooseDontHaveWebsite() {
 		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
 		driver.findElement(By.xpath(xPaths.get(DBOXDONTHAVEWEBSITE))).click();		
 	}
 	
 	// method to click on the button "Tell us about yourself" and pick out "I manage a several web sites"
-	public void chooseSeveralWebsite() {
+	public static void chooseSeveralWebsite() {
 		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
 		driver.findElement(By.xpath(xPaths.get(DBOXSEVERALWEBSITE))).click();		
 	}
 	
 	// method to click on the button "Tell us about yourself" and pick out "I already have a 2Checkout account"
-	public void chooseAlreadyHaveAccount() {
+	public static void chooseAlreadyHaveAccount() {
 		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
 		driver.findElement(By.xpath(xPaths.get(DBOXALREADYHAVEACCOUNT))).click();		
 	}
 	
 	// method to click on the button "Tell us about yourself" and pick out "I just want to play in the sandbox"
-	public void chooseWantToPlay() {
+	public static void chooseWantToPlay() {
 		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
 		driver.findElement(By.xpath(xPaths.get(DBOXWANTTOPLAY))).click();		
 	}
 
 	// method to click on link "Log in" that will send us on the LoginPage
-	public void clickLogIn() {
+	public static void clickLogIn() {
 		driver.findElement(By.xpath(xPaths.get(LINKLOGIN))).click();
 	}
 
 	// method to click on the link "Terms of Use"
-	public void clickTermsOfUse() {
+	public static void clickTermsOfUse() {
 		driver.findElement(By.xpath(xPaths.get(LINKTERMSOFUSE))).click();
 	}
 
 	// method to click on the link "Privacy Policy" 
-	public void clickPrivacyPolicy() {
+	public static void clickPrivacyPolicy() {
 		driver.findElement(By.xpath(xPaths.get(LINKPRIVACYPOLICY))).click();
 	}
 
 	// method to click on the button "Dig In & Start Testing"
-	public void clickSignUp() {
+	public static void clickSignUp() {
 		driver.findElement(By.xpath(xPaths.get(BTNSIGNUP))).click();
 	}
 
 	// method to click on the link "Terms of Use" in the footer area
-	public void clickTermsOfUseFooter() {
+	public static void clickTermsOfUseFooter() {
 		driver.findElement(By.xpath(xPaths.get(LINKTERMSOFUSEFOOTER))).click();
 	}
 
 	// method to click on the link "Privacy Policy" in the footer area
-	public void clickPrivacyPolicyFooter() {
+	public static void clickPrivacyPolicyFooter() {
 		driver.findElement(By.xpath(xPaths.get(LINKPRIVAYPOLICYFOOTER))).click();
-	}	
+	}
+
+	// GET methods
+	public static String getTxtUsername() {return TXTUSERNAME;}
+	public static String getTxtEmail() {return TXTEMAIL;}
+	public static String getTxtPassword() {return TXTPASSWORD;}
+	public static String getTxtConfirmPassword() {return TXTCONFIRMPASSWORD;}
+	public static String getDboxAboutYou() {return DBOXABOUTYOU;}
+	public static String getDboxHaveWebSite() {return DBOXHAVEWEBSITE;}
+	public static String getDboxTxtWebSiteUrl() {return DBOXTXTWEBSITEURL;}
+	public static String getDboxDontHaveWebSite() {return DBOXDONTHAVEWEBSITE;}
+	public static String getDboxSeveralWebSite() {return DBOXSEVERALWEBSITE;}
+	public static String getDboxAlreadyHaveAccount() {return DBOXALREADYHAVEACCOUNT;}
+	public static String getDboxWantToPlay() {return DBOXWANTTOPLAY;}
+	public static String getLinkLogin() {return LINKLOGIN;}
+	public static String getLinkTermsOfUse() {return LINKTERMSOFUSE;}
+	public static String getLinkPrivacyPolicy() {return LINKPRIVACYPOLICY;}
+	public static String getBtnSignUp() {return BTNSIGNUP;}
+	public static String getLinkTermsOfUseFooter() {return LINKTERMSOFUSEFOOTER;}
+	public static String getLinkPrivayPolicyFooter() {return LINKPRIVAYPOLICYFOOTER;}	
+	
 }
