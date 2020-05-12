@@ -28,10 +28,6 @@ public class LoginPage {
 	public void typeUsername(String key) {
 		driver.findElement(By.xpath(xPaths.get(TXTUSERNAME))).sendKeys(key);
 	}
-	public String getXPathUsername() {
-		String xpath = xPaths.get(TXTUSERNAME);
-		return xpath;
-	}
 
 	// method to input the password
 	public void typePassword(String key) {

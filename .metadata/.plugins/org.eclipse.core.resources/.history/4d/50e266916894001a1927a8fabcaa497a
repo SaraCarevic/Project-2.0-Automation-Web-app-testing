@@ -15,7 +15,6 @@ public class OpenPage {
 	private static final String URLCHECKOUT = "CHECKOUTPAGE";
 	private static final String URLTERMSOFUSE = "TERMSOFUSEPAGE";
 	private static final String URLPRIVACYPOLICY = "PRIVACYPOLICYPAGE";
-	private static final String PROFILEHOMEPAGE = "PROFILEHOMEPAGE";
 	
 	// construstor
 	public OpenPage(WebDriver driver, Map<String, String> urls) {
@@ -80,12 +79,6 @@ public class OpenPage {
 	
 	public String getUrlPrivacyPolicy() {
 		String url = urls.get(URLPRIVACYPOLICY);
-		return url;
-	}
-	
-	//
-	public String getUrlProfile() {
-		String url = urls.get(PROFILEHOMEPAGE);
 		return url;
 	}
 }
