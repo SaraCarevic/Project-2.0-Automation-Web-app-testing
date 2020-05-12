@@ -29,10 +29,7 @@ public class OpenPage {
 	}
 	
 	public String getUrlLogin() {
-		String url = "Error";
-		for (String i : urls.keySet()) {
-			if (i.equals(SANDBOXLOGINPAGE)) url = urls.get(i);
-		}		
+		String url = urls.get(SANDBOXLOGINPAGE);
 		return url;
 	}
 	
@@ -42,10 +39,7 @@ public class OpenPage {
 	}
 	
 	public String getUrlForgotPassword() {
-		String url = "Error";
-		for (String i : urls.keySet()) {
-			if (i.equals(FORGOTPASSWORD)) url = urls.get(i);
-		}		
+		String url = urls.get(FORGOTPASSWORD);
 		return url;
 	}
 	
@@ -55,10 +49,7 @@ public class OpenPage {
 	}
 	
 	public String getUrlRegistration() {
-		String url = "Error";
-		for (String i : urls.keySet()) {
-			if (i.equals(URLREGISTRATIONPAGE)) url = urls.get(i);
-		}		
+		String url = urls.get(URLREGISTRATIONPAGE);
 		return url;
 	}
 	
@@ -68,10 +59,7 @@ public class OpenPage {
 	}
 	
 	public String getUrlCheckOut() {
-		String url = "Error";
-		for (String i : urls.keySet()) {
-			if (i.equals(URLCHECKOUT)) url = urls.get(i);
-		}		
+		String url = urls.get(URLCHECKOUT);
 		return url;
 	}
 	
@@ -81,10 +69,7 @@ public class OpenPage {
 	}
 	
 	public String getUrlTermsOfUse() {
-		String url = "Error";
-		for (String i : urls.keySet()) {
-			if (i.equals(URLTERMSOFUSE)) url = urls.get(i);
-		}		
+		String url = urls.get(URLTERMSOFUSE);
 		return url;
 	}
 	
@@ -94,19 +79,13 @@ public class OpenPage {
 	}
 	
 	public String getUrlPrivacyPolicy() {
-		String url = "Error";
-		for (String i : urls.keySet()) {
-			if (i.equals(URLPRIVACYPOLICY)) url = urls.get(i);
-		}		
+		String url = urls.get(URLPRIVACYPOLICY);
 		return url;
 	}
 	
-	// get profile page url
+	//
 	public String getUrlProfile() {
-		String url = "Error";
-		for (String i : urls.keySet()) {
-			if (i.equals(PROFILEHOMEPAGE)) url = urls.get(i);
-		}		
+		String url = urls.get(PROFILEHOMEPAGE);
 		return url;
 	}
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import page.object.LoginPage;
 import page.object.OpenPage;
 import page.object.ProfilePage;
 import page.object.ReadPaths;

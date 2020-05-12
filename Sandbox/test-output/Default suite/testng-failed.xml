@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="page.tests.LoginShould">
+      <class name="page.tests.HeaderShould">
         <methods>
-          <include name="logOneUser"/>
-          <include name="launchBrowser"/>
+          <include name="haveLogo"/>
         </methods>
-      </class> <!-- page.tests.LoginShould -->
+      </class> <!-- page.tests.HeaderShould -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

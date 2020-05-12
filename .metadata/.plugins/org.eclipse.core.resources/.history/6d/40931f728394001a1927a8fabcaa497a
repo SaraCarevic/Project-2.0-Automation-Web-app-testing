@@ -33,32 +33,9 @@ public class HeaderShould {
 		
 		PageHeader header = new PageHeader(driver, ReadPaths.readXPaths());
 		checkOut.assertTrue(driver.findElement(By.xpath(header.getLogoPath())).isEnabled());
-		header.clickLogo();
+		header.clickLogo();		
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://www.2checkout.com/?_ga=2.68427986.274721211.1588585801-1643580948.1588585801");
 		checkOut.assertTrue(driver.getCurrentUrl().contains(open.getUrlCheckOut()));
-		
-		checkOut.assertAll();
-		driver.close();
-	}
-	
-	@Test
-	public void haveHelpIconItems() {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openLogin(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
-		SoftAssert checkOut = new SoftAssert();
-		
-		PageHeader header = new PageHeader(driver, ReadPaths.readXPaths());
-		checkOut.assertTrue(driver.findElement(By.xpath(header.getHelpCenterPath())).isEnabled());
-		header.clickOpenHelpCenter();
-		checkOut.assertTrue(driver.findElement(By.xpath(header.getEmailInTheHelpCenterPath())).isEnabled());
-		checkOut.assertTrue(driver.findElement(By.xpath(header.getSupportInTheHelpCenterPath())).isEnabled());
-		checkOut.assertTrue(driver.findElement(By.xpath(header.getContactUsInTheHelpCenterPath())).isEnabled());
-		checkOut.assertTrue(driver.findElement(By.xpath(header.getKnowledgeBaseInTheHelpCenterPath())).isEnabled());
-		checkOut.assertTrue(driver.findElement(By.xpath(header.getDocumentationInTheHelpCenterPath())).isEnabled());
 		
 		checkOut.assertAll();
 		driver.close();
