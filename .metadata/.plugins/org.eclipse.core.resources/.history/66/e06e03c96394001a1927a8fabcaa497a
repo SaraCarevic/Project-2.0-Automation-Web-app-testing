@@ -52,7 +52,7 @@ public class OpenPageShould {
 		driver.quit();
 	}
 	
-	@Test
+	@Test @Ignore
 	public void openRegistration() {
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		WebDriver driver = new ChromeDriver();

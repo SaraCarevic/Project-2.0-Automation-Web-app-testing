@@ -37,9 +37,17 @@ public class OpenPage {
 		driver.get(urls.get(FORGOTPASSWORD));
 	}
 	
-	public String getUrlForgotPassword() {
+/*	public String getUrlForgotPassword() {
 		String url = urls.get(FORGOTPASSWORD);
 		return url;
+	}*/
+	public String getAllUrls() {
+		String exit = "";
+		for (String i : urls.values()) {
+			exit += i;
+			System.out.println(i);
+		}
+		return exit;
 	}
 	
 	// method to open RegistrationPage
@@ -47,19 +55,9 @@ public class OpenPage {
 		driver.get(urls.get(URLREGISTRATIONPAGE));
 	}
 	
-	public String getUrlRegistration() {
-		String url = urls.get(URLREGISTRATIONPAGE);
-		return url;
-	}
-	
 	// method to open CheckOutPage
 	public void openCheckOut(WebDriver driver) {
 		driver.get(urls.get(URLCHECKOUT));
-	}
-	
-	public String getUrlCheckOut() {
-		String url = urls.get(URLCHECKOUT);
-		return url;
 	}
 	
 	// method to open TermsOfUsePage
@@ -67,18 +65,8 @@ public class OpenPage {
 		driver.get(urls.get(URLTERMSOFUSE));
 	}
 	
-	public String getUrlTermsOfUse() {
-		String url = urls.get(URLTERMSOFUSE);
-		return url;
-	}
-	
 	// method to open PrivacyPolicyPage
 	public void openPrivacyPolicy(WebDriver driver) {
 		driver.get(urls.get(URLPRIVACYPOLICY));
-	}
-	
-	public String getUrlPrivacyPolicy() {
-		String url = urls.get(URLPRIVACYPOLICY);
-		return url;
-	}
+	}	
 }
