@@ -1,0 +1,28 @@
+package page.object;
+
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class PageHeader {
+
+	WebDriver driver;
+	Map<String, String> xPaths;
+	private static final String LOGO2CHECKOUT = "//a[@id='logo-2checkout']";
+	private static final String HELPICON = "//div[@id='help-icon']";
+
+	public PageHeader(WebDriver driver, Map<String, String> xPaths) {
+		this.driver = driver;
+		this.xPaths = xPaths;
+	}
+
+	public void clickOnForgotPassword(String key) {
+		driver.findElement(By.xpath(xPaths.get(LOGO2CHECKOUT)));
+	}
+
+	public void clickOnLoginButton() {
+		driver.findElement(By.xpath(xPaths.get(HELPICON))).click();
+	}
+
+}

@@ -1,0 +1,18 @@
+package proba;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+
+
+public class Proba {
+  @Test
+  public void f() {
+	  int x = 2;
+	  int y = 3;
+	  
+	  SoftAssert as = new SoftAssert();
+	  as.assertEquals(x+y, 5);
+  }
+}

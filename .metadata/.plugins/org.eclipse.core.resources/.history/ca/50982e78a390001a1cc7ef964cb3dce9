@@ -1,0 +1,23 @@
+package page.object;
+
+import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
+
+public class SignUpPage {
+	
+
+	WebDriver driver;
+	Map<String, String> xPaths;	
+	private static final String TXTUSERNAME = "TXTUSERNAMESIGNUPPAGE";
+	private static final String TXTEMAIL = "TXTEMAILSIGNUPPAGE";
+	private static final String TXTPASSWORD = "TXTPASSWORDSIGNUPPAGE";
+	private static final String TXTCOFIRMPASSWORD = "TXTCONFIRMPASSWORDSIGNUPPAGE";
+	private static final String DBABOUTYOU = "DROPBOXABOUTYOUSIGNUPPAGE";
+	private static final String LINKLOGIN = "LINKLOGINSIGNUPPAGE";
+	private static final String "LINKTERMSOFUSESIGNUPPAGE";
+	private static final String "LINKPRIVACYPOLICYSIGNUPPAGE";
+	private static final String "BTNSIGNUP";
+	private static final String "LINKTERMSOFUSEFOOTERSIGNUPPAGE";
+	private static final String "LINKPRIVACYPOLICYFOOTERSIGNUPPAGE";
+}

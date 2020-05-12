@@ -1,0 +1,47 @@
+package page.object;
+
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class RecoveryProfilePage {
+
+	WebDriver driver;
+	Map<String, String> xPaths;
+	Map<String, String> urls;
+	
+	private static final String TXTUSERNAME = "TXTUSERNAMERESETPAGE";
+	private static final String BTNEMAIL = "BTNEMAILRESETPAGE";
+	private static final String LINKLOGIN = "LINKLOGINRESETPAGE";
+	
+	private static final String FORGOTPASSWORD = "FORGOTPASSWORDPAGE";
+
+	// constructor
+	public RecoveryProfilePage(WebDriver driver, Map<String, String> xPaths, Map<String, String> urls) {
+		this.driver = driver;
+		this.xPaths = xPaths;
+		this.urls = urls;
+	}
+	
+	// method for opening page for recovering profile
+	public void openRecoveryProfilePage(WebDriver driver) {
+		driver.get(FORGOTPASSWORD);
+	}
+
+	// method for inputing the user name 
+	public void typeUsername(String key) {
+		driver.findElement(By.xpath(xPaths.get(TXTUSERNAME))).sendKeys(key);
+	}
+
+	// method for sending the e-mail to recover profile
+	public void clickSendEmail(String key) {
+		driver.findElement(By.xpath(xPaths.get(BTNEMAIL))).click();
+	}
+
+	// method for clicking on "Login" link that will send us back on the login page
+	public void clickOnLogin() {
+		driver.findElement(By.xpath(xPaths.get(LINKLOGIN))).click();
+	}
+
+}

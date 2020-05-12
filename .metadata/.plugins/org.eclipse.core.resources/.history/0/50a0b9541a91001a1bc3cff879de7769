@@ -1,0 +1,106 @@
+package page.object;
+
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class RegistrationPage {
+
+	WebDriver driver;
+	Map<String, String> xPaths;	
+	private static final String TXTUSERNAME = "TXTUSERNAMESIGNUPPAGE";
+	private static final String TXTEMAIL = "TXTEMAILSIGNUPPAGE";
+	private static final String TXTPASSWORD = "TXTPASSWORDSIGNUPPAGE";
+	private static final String TXTCOFIRMPASSWORD = "TXTCONFIRMPASSWORDSIGNUPPAGE";
+	private static final String DBOXABOUTYOU = "DROPBOXABOUTYOUSIGNUPPAGE";
+	private static final String DBOXABOUTYOURSELF = "DBOXABOUTYOURSELFSIGNUPPAGE";
+	private static final String DBOXHAVEWEBSITE = "DBOXHAVEWEBSITESIGNUPPAGE";
+	private static final String DBOXTXTWEBSITEURL = "DBOXTXTWEBSITEURLSIGNUPPAGE";
+	private static final String DBOXDONTHAVEWEBSITE = "DBOXDONTHAVEWEBSITESIGNUPPAGE";
+	private static final String DBOXSEVERALWEBSITE = "DBOXSEVERALWEBSITESIGNUPPAGE";
+	private static final String DBOXALREADYHAVEACCOUNT = "DBOXALREADYHAVEACCOUNTSIGNUPPAGE";
+	private static final String DBOXWANTTOPLAY = "DBOXWANTTOPLAYSIGNUPPAGE";
+	private static final String LINKLOGIN = "LINKLOGINSIGNUPPAGE";
+	private static final String LINKTERMSOFUSE = "LINKTERMSOFUSESIGNUPPAGE";
+	private static final String LINKPRIVACYPOLICY = "LINKPRIVACYPOLICYSIGNUPPAGE";
+	private static final String BTNSIGNUP = "BTNSIGNUP";
+	private static final String LINKTERMSOFUSEFOOTER = "LINKTERMSOFUSEFOOTERSIGNUPPAGE";
+	private static final String LINKPRIVAYPOLICYFOOTER = "LINKPRIVACYPOLICYFOOTERSIGNUPPAGE";
+
+	public RegistrationPage(WebDriver driver, Map<String, String> xPaths) {
+		this.driver = driver;
+		this.xPaths = xPaths;
+	}
+
+	public void typeUsername(String key) {
+		driver.findElement(By.xpath(xPaths.get(TXTUSERNAME))).sendKeys(key);
+	}
+	
+	public void typeEmail(String key) {
+		driver.findElement(By.xpath(xPaths.get(TXTEMAIL))).sendKeys(key);
+	}	
+	
+	public void typePassword(String key) {
+		driver.findElement(By.xpath(xPaths.get(TXTPASSWORD))).sendKeys(key);
+	}	
+	
+	public void typeCofirmPassword(String key) {
+		driver.findElement(By.xpath(xPaths.get(TXTCOFIRMPASSWORD))).sendKeys(key);
+	}
+	
+	public void chooseAboutYourself(String key) {
+		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
+		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOURSELF))).click();		
+	}
+	
+	public void chooseHaveWebsite(String key) {
+		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
+		driver.findElement(By.xpath(xPaths.get(DBOXHAVEWEBSITE))).click();	
+		driver.findElement(By.xpath(xPaths.get(DBOXTXTWEBSITEURL))).sendKeys(key);
+	}
+
+	public void chooseDontHaveWebsite(String key) {
+		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
+		driver.findElement(By.xpath(xPaths.get(DBOXDONTHAVEWEBSITE))).click();		
+	}
+	
+	public void chooseSeveralWebsite(String key) {
+		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
+		driver.findElement(By.xpath(xPaths.get(DBOXSEVERALWEBSITE))).click();		
+	}
+	
+	public void chooseAlreadyHaveAccount(String key) {
+		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
+		driver.findElement(By.xpath(xPaths.get(DBOXALREADYHAVEACCOUNT))).click();		
+	}
+	
+	public void chooseWantToPlay(String key) {
+		driver.findElement(By.xpath(xPaths.get(DBOXABOUTYOU))).click();
+		driver.findElement(By.xpath(xPaths.get(DBOXWANTTOPLAY))).click();		
+	}
+
+	public void clickOnLogin(String key) {
+		driver.findElement(By.xpath(xPaths.get(LINKLOGIN))).click();
+	}
+
+	public void clickOnTermsOfUse(String key) {
+		driver.findElement(By.xpath(xPaths.get(LINKTERMSOFUSE))).click();
+	}
+
+	public void clickOnPrivacyPolicy(String key) {
+		driver.findElement(By.xpath(xPaths.get(LINKPRIVACYPOLICY))).click();
+	}
+
+	public void clickOnSignUp(String key) {
+		driver.findElement(By.xpath(xPaths.get(BTNSIGNUP))).click();
+	}
+
+	public void clickOnTermsOfUseFooter(String key) {
+		driver.findElement(By.xpath(xPaths.get(LINKTERMSOFUSEFOOTER))).click();
+	}
+
+	public void clickOnPrivacyPolicyFooter(String key) {
+		driver.findElement(By.xpath(xPaths.get(LINKPRIVAYPOLICYFOOTER))).click();
+	}
+}

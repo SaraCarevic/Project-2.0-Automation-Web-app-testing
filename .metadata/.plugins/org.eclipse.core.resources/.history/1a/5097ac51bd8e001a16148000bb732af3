@@ -1,0 +1,19 @@
+TXTUSERNAMELOGIN~//input[@placeholder='Username']
+TXTPASSWORDLOGIN~//input[@id='password']
+LINKFORGOTPASSWORDLOGIN~//a[@id='forgot-password']
+BTNLOGIN~//input[@class='btn blue']
+LINKSIGNUP~//a[contains(text(),'Sign up')]
+LINKTERMSOFUSEFOOTERLOGIN~//a[contains(text(),'Terms of Use')]
+LINKPRIVACYPOLICYFOOTERLOGIN~//a[contains(text(),'Privacy Policy')]
+TXTUSERNAMESIGNUP~//a[contains(text(),'Privacy Policy')]
+TXTEMAILSIGNUP~//input[@id='email']
+TXTPASSWORDSIGNUP~//input[@id='password']
+TXTCONFIRMPASSWORDSIGNUP~
+DROPBOXABOUTSIGNUP~
+LINKTERMSOFUSESIGNUP~
+LINKPRIVACYPOLICYSIGNUP~
+BTNSIGNUP~
+LINKTERMSOFUSEFOOTERSIGNUP~
+LINKPRIVACYPOLICYFOOTERSIGNUP~
+LINK2CHECKOUTHEADER~//a[@id='logo-2checkout']
+HELPICONHEADER~//div[@id='help-icon']

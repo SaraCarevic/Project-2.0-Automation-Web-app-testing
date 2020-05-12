@@ -1,0 +1,38 @@
+package page.object;
+
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class RecoveryProfilePage {
+
+	WebDriver driver;
+	Map<String, String> xPaths;
+	
+	private static final String TXTUSERNAME = "TXTUSERNAMERESETPAGE";
+	private static final String BTNEMAIL = "BTNEMAILRESETPAGE";
+	private static final String LINKLOGIN = "LINKLOGINRESETPAGE";
+
+	// constructor
+	public RecoveryProfilePage(WebDriver driver, Map<String, String> xPaths) {
+		this.driver = driver;
+		this.xPaths = xPaths;
+	}
+
+	// method to input the user name 
+	public void typeUsername(String key) {
+		driver.findElement(By.xpath(xPaths.get(TXTUSERNAME))).sendKeys(key);
+	}
+
+	// method to click on the button "Send Reset Email"
+	public void clickSendEmail() {
+		driver.findElement(By.xpath(xPaths.get(BTNEMAIL))).click();
+	}
+
+	// method to click on the link "Login" that will send us back on the LoginPage
+	public void clickLogin() {
+		driver.findElement(By.xpath(xPaths.get(LINKLOGIN))).click();
+	}
+
+}

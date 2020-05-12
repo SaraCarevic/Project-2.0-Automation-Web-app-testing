@@ -1,0 +1,47 @@
+package page.tests;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import page.object.OpenPage;
+import page.object.RegistrationPage;
+
+public class RegistrationShould {
+
+	WebDriver driver;
+	Map<String, String> urls;
+
+	@BeforeTest
+	public void openRegistrationPage(){
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		
+		driver = new ChromeDriver();
+		OpenPage.openRegistration(driver);
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);	
+	}
+
+	@Test
+	public void registerOneUser() throws InterruptedException {
+		SoftAssert checkOut = new SoftAssert();
+		
+		RegistrationPage.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		RegistrationPage.typeEmail(utility.ExcelUtils.getDataAt(1, 1));
+		RegistrationPage.typePassword(utility.ExcelUtils.getDataAt(1, 2));
+		RegistrationPage.typeCofirmPassword(utility.ExcelUtils.getDataAt(1, 2));
+		//RegistrationPage.chooseAboutYourself(key);
+		
+		Thread.sleep(2000);
+		RegistrationPage.clickOnSignUp();
+		
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		
+		checkOut.assertAll();
+		driver.quit();	
+	}
+}

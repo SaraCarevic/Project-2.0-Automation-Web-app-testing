@@ -1,0 +1,7 @@
+LOGINPAGE~https://sandbox.2checkout.com/sandbox
+FORGOTPASSWORDPAGE~https://sandbox.2checkout.com/sandbox/noauth/forgotten_password
+SIGNUPPAGE~https://sandbox.2checkout.com/sandbox/signup
+SIGNEDINPAGE~https://sandbox.2checkout.com/sandbox/home/dashboard
+CHECKOUTPAGE~https://www.2checkout.com/?_ga=2.68427986.274721211.1588585801-1643580948.1588585801
+TERMSOFUSEPAGE~https://www.2checkout.com/legal/terms/?_ga=2.68427986.274721211.1588585801-1643580948.1588585801
+PRIVACYPOLICYPAGE~https://www.2checkout.com/legal/privacy/?_ga=2.68427986.274721211.1588585801-1643580948.1588585801

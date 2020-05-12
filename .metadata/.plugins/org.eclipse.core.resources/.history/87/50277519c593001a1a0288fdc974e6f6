@@ -1,0 +1,112 @@
+package page.tests;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import page.object.HomePage;
+import page.object.LoginPage;
+import page.object.OpenPage;
+import page.object.RegistrationPage;
+
+public class RegistrationShould {
+
+	WebDriver driver;
+	Map<String, String> urls = new HashMap<>();
+	Map<String, String> xPaths = new HashMap<>();
+
+	private String PROFILE = "PROFILEHOMEPAGE";
+
+	@BeforeTest
+	public void openRegistrationForm() {
+		// System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+
+		// driver = new FirefoxDriver();
+		driver = new ChromeDriver();
+		OpenPage.openRegistration(driver);
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	}
+	
+	@Test
+	public void haveUsernameTextbox() {
+		SoftAssert checkOut = new SoftAssert();
+		
+		String key = "username";
+		RegistrationPage.typeUsername(key);
+		
+	}
+
+	@Test
+	public void registerOneUser() throws InterruptedException {
+		SoftAssert checkOut = new SoftAssert();
+
+		utility.ExcelUtils.setExcell("SignUp.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+
+		RegistrationPage.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		RegistrationPage.typeEmail(utility.ExcelUtils.getDataAt(1, 1));
+		RegistrationPage.typePassword(utility.ExcelUtils.getDataAt(1, 2));
+		RegistrationPage.typeCofirmPassword(utility.ExcelUtils.getDataAt(1, 2));
+		RegistrationPage.chooseHaveWebsite("www.website.com");
+
+		Thread.sleep(2000);
+
+		RegistrationPage.clickSignUp();
+
+		// checkOut.assertEquals(driver.getCurrentUrl(),"https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertEquals(driver.getCurrentUrl(), PROFILE);
+
+		checkOut.assertAll();
+
+		driver.quit();
+		utility.ExcelUtils.closeExcell();
+	}
+
+	@Test
+	public void registerThirtyUsers() throws InterruptedException {
+		SoftAssert checkOut = new SoftAssert();
+
+		utility.ExcelUtils.setExcell("SignUp.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+
+		for (int i = 1; i < utility.ExcelUtils.getRowNumber(); i++) {
+
+			RegistrationPage.typeUsername(utility.ExcelUtils.getDataAt(i, 0));
+			RegistrationPage.typeEmail(utility.ExcelUtils.getDataAt(i, 1));
+			RegistrationPage.typePassword(utility.ExcelUtils.getDataAt(i, 2));
+			RegistrationPage.typeCofirmPassword(utility.ExcelUtils.getDataAt(i, 2));
+			RegistrationPage.chooseHaveWebsite("www.website.com"); // random site
+
+			Thread.sleep(2000);
+			RegistrationPage.clickSignUp();
+			Thread.sleep(2000);
+
+			checkOut.assertEquals(driver.getCurrentUrl(), PROFILE);
+
+			if (i < utility.ExcelUtils.getRowNumber() - 1) {
+				HomePage.clickAccountAvatar();
+				Thread.sleep(2000);
+				HomePage.clickLogOut();
+				Thread.sleep(2000);
+				LoginPage.clickSignUp();
+			}
+
+		}
+
+		checkOut.assertAll();
+
+		driver.quit();
+		utility.ExcelUtils.closeExcell();
+	}
+}

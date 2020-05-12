@@ -1,0 +1,50 @@
+package page.object;
+
+import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
+
+public class OpenPage {
+
+	WebDriver driver;
+	Map<String, String> urls;
+	
+	private static final String URLLOGINPAGE = "LOGINPAGE";		
+	private static final String FORGOTPASSWORD = "FORGOTPASSWORDPAGE";
+	private static final String URLREGISTRATIONPAGE = "SIGNUPPAGE";
+	// private static final String URLSIGNEDINPAGE = "SIGNEDINPAGE";
+	private static final String URLCHECKOUT = "CHECKOUTPAGE";
+	private static final String URLTERMSOFUSE = "TERMSOFUSEPAGE";
+	private static final String URLPRIVACYPOLICY = "PRIVACYPOLICYPAGE";
+	
+	// method to open LoginPage
+	public static void openLogin(WebDriver driver) {
+		driver.get(URLLOGINPAGE);
+	}
+	
+	// method to open RecoveryProflePage
+	public static void openRecoveryProfile(WebDriver driver) {
+		driver.get(FORGOTPASSWORD);
+	}
+	
+	// method to open RegistrationPage
+	public static void openRegistration(WebDriver driver) {
+		driver.get(URLREGISTRATIONPAGE);
+	}
+	
+	// method to open CheckOutPage
+	public static void openCheckOut(WebDriver driver) {
+		driver.get(URLCHECKOUT);
+	}
+	
+	// method to open TermsOfUsePage
+	public static void openTermsOfUse(WebDriver driver) {
+		driver.get(URLTERMSOFUSE);
+	}
+	
+	// method to open PrivacyPolicyPage
+	public static void openPrivacyPolicy(WebDriver driver) {
+		driver.get(URLPRIVACYPOLICY);
+	}
+
+}
