@@ -9,50 +9,46 @@ public class OpenPage {
 	WebDriver driver;
 	Map<String, String> urls;
 	
-	private static final String URLLOGINPAGE = "SANDBOXLOGINPAGE";		
+	private static final String LOGINPAGE = "SANDBOXLOGINPAGE";		
 	private static final String FORGOTPASSWORD = "FORGOTPASSWORDPAGE";
 	private static final String URLREGISTRATIONPAGE = "SIGNUPPAGE";
 	private static final String URLCHECKOUT = "CHECKOUTPAGE";
 	private static final String URLTERMSOFUSE = "TERMSOFUSEPAGE";
 	private static final String URLPRIVACYPOLICY = "PRIVACYPOLICYPAGE";
 	
+	// construstor
+	public OpenPage(WebDriver driver, Map<String, String> urls) {
+		this.driver = driver;
+		this.urls = urls;
+	}
+	
 	// method to open LoginPage
-	public static void openLogin(WebDriver driver) {
-		driver.get(URLLOGINPAGE);
+	public void openLogin(WebDriver driver) {
+		driver.get(urls.get(LOGINPAGE));
 	}
 	
 	// method to open RecoveryProflePage
-	public static void openRecoveryProfile(WebDriver driver) {
-		driver.get(FORGOTPASSWORD);
+	public void openRecoveryProfile(WebDriver driver) {
+		driver.get(urls.get(FORGOTPASSWORD));
 	}
 	
 	// method to open RegistrationPage
-	public static void openRegistration(WebDriver driver) {
-		driver.get(URLREGISTRATIONPAGE);
+	public void openRegistration(WebDriver driver) {
+		driver.get(urls.get(URLREGISTRATIONPAGE));
 	}
 	
 	// method to open CheckOutPage
-	public static void openCheckOut(WebDriver driver) {
-		driver.get(URLCHECKOUT);
+	public void openCheckOut(WebDriver driver) {
+		driver.get(urls.get(URLCHECKOUT));
 	}
 	
 	// method to open TermsOfUsePage
-	public static void openTermsOfUse(WebDriver driver) {
-		driver.get(URLTERMSOFUSE);
+	public void openTermsOfUse(WebDriver driver) {
+		driver.get(urls.get(URLTERMSOFUSE));
 	}
 	
 	// method to open PrivacyPolicyPage
-	public static void openPrivacyPolicy(WebDriver driver) {
-		driver.get(URLPRIVACYPOLICY);
-	}
-
-	// GET methods
-	public static String getUrlLoginPage() {return URLLOGINPAGE;}
-	public static String getForgotPassword() {return FORGOTPASSWORD;}
-	public static String getUrlRegistrationPage() {return URLREGISTRATIONPAGE;}
-	public static String getUrlCheckout() {return URLCHECKOUT;}
-	public static String getUrlTermsOfUse() {return URLTERMSOFUSE;}
-	public static String getUrlPrivacyPolicy() {return URLPRIVACYPOLICY;}
-
-	
+	public void openPrivacyPolicy(WebDriver driver) {
+		driver.get(urls.get(URLPRIVACYPOLICY));
+	}	
 }

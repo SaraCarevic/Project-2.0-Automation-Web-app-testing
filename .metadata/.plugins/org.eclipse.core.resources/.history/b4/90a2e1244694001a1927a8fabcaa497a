@@ -1,0 +1,32 @@
+package page.tests;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import page.object.OpenPage;
+
+public class OpenPageShould {
+  @Test
+  public void f() {
+	  System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+
+		WebDriver wb = new ChromeDriver();
+		wb.get("https://sandbox.2checkout.com/sandbox");
+		//wb.get(PageHeader.URL); // treba mi url
+		wb.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+		SoftAssert sa = new SoftAssert();
+
+		//sa.assertTrue(wb.findElement(By.xpath(PageHeader.XPATH_LOGO)).isEnabled());
+		//PageHeader.clickLogo(wb);
+		//sa.assertTrue(wb.getCurrentUrl().contains(PageHeader.URL));
+
+		wb.quit();
+		sa.assertAll();
+  }
+}

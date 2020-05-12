@@ -1,0 +1,64 @@
+package page.object;
+
+import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
+
+public class OpenPage {
+
+	WebDriver driver;
+	Map<String, String> urls;
+	
+	private static final String SANDBOXLOGINPAGE = "SANDBOXLOGINPAGE";		
+	private static final String FORGOTPASSWORD = "FORGOTPASSWORDPAGE";
+	private static final String URLREGISTRATIONPAGE = "SIGNUPPAGE";
+	private static final String URLCHECKOUT = "CHECKOUTPAGE";
+	private static final String URLTERMSOFUSE = "TERMSOFUSEPAGE";
+	private static final String URLPRIVACYPOLICY = "PRIVACYPOLICYPAGE";
+	
+	// construstor
+	public OpenPage(WebDriver driver, Map<String, String> urls) {
+		this.driver = driver;
+		this.urls = urls;
+	}
+	
+	// method to open LoginPage
+	public void openLogin(WebDriver driver) {
+		driver.get(SANDBOXLOGINPAGE);
+	}
+	
+	// method to open RecoveryProflePage
+	public static void openRecoveryProfile(WebDriver driver) {
+		driver.get(FORGOTPASSWORD);
+	}
+	
+	// method to open RegistrationPage
+	public static void openRegistration(WebDriver driver) {
+		driver.get(URLREGISTRATIONPAGE);
+	}
+	
+	// method to open CheckOutPage
+	public static void openCheckOut(WebDriver driver) {
+		driver.get(URLCHECKOUT);
+	}
+	
+	// method to open TermsOfUsePage
+	public static void openTermsOfUse(WebDriver driver) {
+		driver.get(URLTERMSOFUSE);
+	}
+	
+	// method to open PrivacyPolicyPage
+	public static void openPrivacyPolicy(WebDriver driver) {
+		driver.get(URLPRIVACYPOLICY);
+	}
+
+	// GET methods
+	public String getUrlLoginPage() {return SANDBOXLOGINPAGE;}
+	public static String getForgotPassword() {return FORGOTPASSWORD;}
+	public static String getUrlRegistrationPage() {return URLREGISTRATIONPAGE;}
+	public static String getUrlCheckout() {return URLCHECKOUT;}
+	public static String getUrlTermsOfUse() {return URLTERMSOFUSE;}
+	public static String getUrlPrivacyPolicy() {return URLPRIVACYPOLICY;}
+
+	
+}
