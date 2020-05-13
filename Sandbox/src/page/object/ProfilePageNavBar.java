@@ -15,6 +15,8 @@ public class ProfilePageNavBar {
 	private static final String ACCOUNT = "NAVBARACCOUNTPROFILEPAGE";
 	private static final String SALES = "NAVBARSALESPROFILEPAGE";
 	private static final String PRODUCTS = "NAVBARPRODUCTSPROFILEPAGE";
+	private static final String CREATENEWPRODUCT = "CREATENEWPRODUCTPROFILEPAGE";
+	private static final String UPDATEPRODUCT = "UPDATEPRODUCTSUCCESSFUL";
 	private static final String SHIPPING = "NAVBARSHIPPINGPROFILEPAGE";
 	private static final String REPORTS = "NAVBARREPORTSPROFILEPAGE";
 	private static final String API = "NAVBARAPIPROFILEPAGE";
@@ -69,6 +71,20 @@ public class ProfilePageNavBar {
 	// method to click on the products icon
 	public void clickProductsNav() {
 		driver.findElement(By.xpath(xPaths.get(PRODUCTS))).click();
+	}
+	public String getUpdateSuccessfulPath() {
+		String xPath = "Error";
+		for (String i : xPaths.keySet()) {
+			if (i.equals(UPDATEPRODUCT)) xPath = xPaths.get(i);
+		}		
+		return xPath;
+	}
+	public String getCreateNewProductUrl() {
+		String url = "Error";
+		for (String i : urls.keySet()) {
+			if (i.equals(CREATENEWPRODUCT)) url = urls.get(i);
+		}		
+		return url;
 	}
 	public String getProductsNavPath() {
 		String xPath = "Error";

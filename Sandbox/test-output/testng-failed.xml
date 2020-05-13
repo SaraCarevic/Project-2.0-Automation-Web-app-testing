@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="page.tests.ProfilePageNavBarShould">
+      <class name="page.tests.ProductPageShould">
         <methods>
-          <include name="leadTo"/>
-          <include name="haveNavBarItems"/>
-          <include name="launchBrowser"/>
+          <include name="editProductPrice"/>
         </methods>
-      </class> <!-- page.tests.ProfilePageNavBarShould -->
+      </class> <!-- page.tests.ProductPageShould -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

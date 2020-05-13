@@ -25,6 +25,7 @@ public class OpenPage {
 	private static final String URLAPI = "APINAVBARPROFILEPAGE";
 	private static final String URLNOTIFICATIONS = "NOTIFICATIONSNAVBARPROFILEPAGE";
 	private static final String URLHELP = "HELPNAVBARPROFILEPAGE";
+	private static final String URLDELETEDPRODUCT = "DELETEDPRODUCTPROFILEPAGE";
 
 	
 	// construstor
@@ -188,6 +189,15 @@ public class OpenPage {
 		String url = "Error";
 		for (String i : urls.keySet()) {
 			if (i.equals(URLHELP)) url = urls.get(i);
+		}		
+		return url;
+	}
+	
+	// deleted item final page / get url
+	public String getUrlDeletedProduct() {
+		String url = "Error";
+		for (String i : urls.keySet()) {
+			if (i.equals(URLDELETEDPRODUCT)) url = urls.get(i);
 		}		
 		return url;
 	}

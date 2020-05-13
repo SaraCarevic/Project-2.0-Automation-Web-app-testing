@@ -9,6 +9,9 @@ PROFILEHOMEPAGE~https://sandbox.2checkout.com/sandbox/home/dashboard
 ACCOUNTNAVBARPROFILEPAGE~https://sandbox.2checkout.com/sandbox/acct/
 SALESNAVBARPROFILEPAGE~https://sandbox.2checkout.com/sandbox/sales/
 PRODUCTSNAVBARPROFILEPAGE~https://sandbox.2checkout.com/sandbox/products/
+PRODUCTEDITPRICEPROFILEPAGE~https://sandbox.2checkout.com/sandbox/products/edit_products
+CREATENEWPRODUCTPROFILEPAGE~https://sandbox.2checkout.com/sandbox/products/create_product
+DELETEDPRODUCTPROFILEPAGE~https://sandbox.2checkout.com/sandbox/products/delete_products
 SHIPPINGNAVBARPROFILEPAGE~https://sandbox.2checkout.com/sandbox/shipping/
 REPORTSNAVBARPROFILEPAGE~https://sandbox.2checkout.com/sandbox/reports/
 APINAVBARPROFILEPAGE~https://sandbox.2checkout.com/sandbox/api/

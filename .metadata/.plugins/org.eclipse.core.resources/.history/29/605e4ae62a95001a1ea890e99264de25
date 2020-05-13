@@ -1,0 +1,25 @@
+package page.object;
+
+public class ProductPage {
+
+	private final static String ADDNEWPRODUCT = "BTNADDNEWPRODUCT";
+	private final static String CHECKBOXPRODUCT = "CHECKBOXPRODUCT";
+	private final static String DELETEPRODUCT = "BTNDELETEPRODUCT";
+	private final static String PRODUCTNAME = "PRODUCTINFORMATIONPRODUCTNAME";
+	private final static String PRODUCTID = "PRODUCTINFORMATIONPRODUCTID";
+	private final static String SHORTPRODUCTDESCRIPTION = "PRODUCTINFORMATIONSHORTPRODUCTDESCRIPTION";
+	private final static String LONGPRODUCTDESCRIPTION = "PRODUCTINFORMATIONLONGPRODUCTDESCRIPTION";
+	private final static String PRODUCTPRICE = "PRODUCTINFORMATIONPRODUCTPRICE";
+	private final static String APPROVEDURL = "PRODUCTINFORMATIONAPPROVEDURL";
+	private final static String SUBMIT = "CREATINGPRODUCTSUBMIT";
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+}

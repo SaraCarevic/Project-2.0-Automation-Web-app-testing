@@ -1,0 +1,32 @@
+package page.object;
+
+import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
+
+public class ProductPage {
+	
+	WebDriver driver;
+	Map<String, String> xPaths;
+
+	private final static String ADDNEWPRODUCT = "BTNADDNEWPRODUCT";
+	private final static String CHECKBOXPRODUCT = "CHECKBOXPRODUCT";
+	private final static String DELETEPRODUCT = "BTNDELETEPRODUCT";
+	private final static String PRODUCTNAME = "PRODUCTINFORMATIONPRODUCTNAME";
+	private final static String PRODUCTID = "PRODUCTINFORMATIONPRODUCTID";
+	private final static String SHORTPRODUCTDESCRIPTION = "PRODUCTINFORMATIONSHORTPRODUCTDESCRIPTION";
+	private final static String LONGPRODUCTDESCRIPTION = "PRODUCTINFORMATIONLONGPRODUCTDESCRIPTION";
+	private final static String PRODUCTPRICE = "PRODUCTINFORMATIONPRODUCTPRICE";
+	private final static String APPROVEDPRODUXTURL = "PRODUCTINFORMATIONAPPROVEDURL";
+	private final static String SUBMIT = "CREATINGPRODUCTSUBMIT";
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+}
