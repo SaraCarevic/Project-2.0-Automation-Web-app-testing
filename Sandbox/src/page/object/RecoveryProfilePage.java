@@ -13,7 +13,7 @@ public class RecoveryProfilePage {
 	private static final String TXTUSERNAME = "TXTUSERNAMERESETPAGE";
 	private static final String BTNEMAIL = "BTNEMAILRESETPAGE";
 	private static final String LINKLOGIN = "LINKLOGINRESETPAGE";
-	private static final String BTNCONFIRM = "BTNCONFIRMLOGINRESETPAGE";
+	private static final String BTNCONFIRMLOGINRESET = "BTNCONFIRMLOGINRESETPAGE";
 
 	// constructor
 	public RecoveryProfilePage(WebDriver driver, Map<String, String> xPaths) {
@@ -58,13 +58,13 @@ public class RecoveryProfilePage {
 	}
 
 	// method to click on the button to get to the login form after email to recover profile sent
-	public void clickConfirm() {
-		driver.findElement(By.xpath(xPaths.get(BTNCONFIRM))).click();
+	public void clickConfirmLoginReset() {
+		driver.findElement(By.xpath(xPaths.get(BTNCONFIRMLOGINRESET))).click();
 	}
-	public String getXPathConfirm() {
+	public String getXPathConfirmLoginReset() {
 		String paths = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(BTNCONFIRM)) paths = xPaths.get(i);
+			if (i.equals(BTNCONFIRMLOGINRESET)) paths = xPaths.get(i);
 		}		
 		return paths;
 	}

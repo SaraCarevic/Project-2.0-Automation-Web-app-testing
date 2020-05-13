@@ -16,6 +16,16 @@ public class OpenPage {
 	private static final String URLTERMSOFUSE = "TERMSOFUSEPAGE";
 	private static final String URLPRIVACYPOLICY = "PRIVACYPOLICYPAGE";
 	private static final String PROFILEHOMEPAGE = "PROFILEHOMEPAGE";
+
+	private static final String URLACCOUNT = "ACCOUNTNAVBARPROFILEPAGE";
+	private static final String URLSALES = "SALESNAVBARPROFILEPAGE";
+	private static final String URLPRODUCTS = "PRODUCTSNAVBARPROFILEPAGE";
+	private static final String URLSHIPPING = "SHIPPINGNAVBARPROFILEPAGE";
+	private static final String URLREPORTS = "REPORTSNAVBARPROFILEPAGE";
+	private static final String URLAPI = "APINAVBARPROFILEPAGE";
+	private static final String URLNOTIFICATIONS = "NOTIFICATIONSNAVBARPROFILEPAGE";
+	private static final String URLHELP = "HELPNAVBARPROFILEPAGE";
+
 	
 	// construstor
 	public OpenPage(WebDriver driver, Map<String, String> urls) {
@@ -106,6 +116,78 @@ public class OpenPage {
 		String url = "Error";
 		for (String i : urls.keySet()) {
 			if (i.equals(PROFILEHOMEPAGE)) url = urls.get(i);
+		}		
+		return url;
+	}
+	
+	// navigation bar - account 
+	public String getUrlAccountNavBar() {
+		String url = "Error";
+		for (String i : urls.keySet()) {
+			if (i.equals(URLACCOUNT)) url = urls.get(i);
+		}		
+		return url;
+	}
+	
+	// navigation bar - sales 
+	public String getUrlSalesNavBar() {
+		String url = "Error";
+		for (String i : urls.keySet()) {
+			if (i.equals(URLSALES)) url = urls.get(i);
+		}		
+		return url;
+	}
+
+	// navigation bar - products 
+	public String getUrlProductsNavBar() {
+		String url = "Error";
+		for (String i : urls.keySet()) {
+			if (i.equals(URLPRODUCTS)) url = urls.get(i);
+		}		
+		return url;
+	}
+	
+	// navigation bar - shipping 
+	public String getUrlShippingNavBar() {
+		String url = "Error";
+		for (String i : urls.keySet()) {
+			if (i.equals(URLSHIPPING)) url = urls.get(i);
+		}		
+		return url;
+	}
+
+	// navigation bar - reports 
+	public String getUrlReportsNavBar() {
+		String url = "Error";
+		for (String i : urls.keySet()) {
+			if (i.equals(URLREPORTS)) url = urls.get(i);
+		}		
+		return url;
+	}
+
+	// navigation bar - API 
+	public String getUrlApiNavBar() {
+		String url = "Error";
+		for (String i : urls.keySet()) {
+			if (i.equals(URLAPI)) url = urls.get(i);
+		}		
+		return url;
+	}
+
+	// navigation bar - notifications 
+	public String getUrlNotificationsNavBar() {
+		String url = "Error";
+		for (String i : urls.keySet()) {
+			if (i.equals(URLNOTIFICATIONS)) url = urls.get(i);
+		}		
+		return url;
+	}
+
+	// navigation bar - help 
+	public String getUrlHelpNavBar() {
+		String url = "Error";
+		for (String i : urls.keySet()) {
+			if (i.equals(URLHELP)) url = urls.get(i);
 		}		
 		return url;
 	}

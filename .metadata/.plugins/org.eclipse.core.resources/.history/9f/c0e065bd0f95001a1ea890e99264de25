@@ -1,0 +1,9 @@
+package page.tests;
+
+import org.testng.annotations.Test;
+
+public class ProfilePageNavBarShould {
+  @Test
+  public void f() {
+  }
+}

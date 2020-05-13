@@ -21,14 +21,14 @@ public class RecoveryPageShould {
 	Map<String, String> xPaths = new HashMap<>();
 	
 	@Test
-	public void have() throws InterruptedException {
+	public void haveElements() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
 		open.openRecoveryProfile(driver);	
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 
 		SoftAssert checkOut = new SoftAssert();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlForgotPassword());
@@ -37,6 +37,27 @@ public class RecoveryPageShould {
 		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathUsername())).isEnabled());
 		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathEmail())).isEnabled());
 		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathLogIn())).isEnabled());
+		
+		checkOut.assertAll();
+		driver.close();
+	}
+	
+	@Test
+	public void notRecoverWithoutUsername() throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
+		open.openRecoveryProfile(driver);	
+		Thread.sleep(5000);
+
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlForgotPassword());
+		
+		RecoveryProfilePage recovery = new RecoveryProfilePage(driver, ReadPaths.readXPaths());
+		recovery.clickSendEmail();
+		checkOut.assertFalse(driver.findElement(By.xpath(recovery.getXPathConfirmLoginReset())).isEnabled());
 		
 		checkOut.assertAll();
 		driver.close();
@@ -50,7 +71,7 @@ public class RecoveryPageShould {
 		driver.manage().window().maximize();
 		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
 		open.openRecoveryProfile(driver);	
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 
 		SoftAssert checkOut = new SoftAssert();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlForgotPassword());
@@ -61,7 +82,7 @@ public class RecoveryPageShould {
 		recovery.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
 		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathEmail())).isEnabled());
 		recovery.clickSendEmail();
-		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathConfirm())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathConfirmLoginReset())).isEnabled());
 		
 		checkOut.assertAll();
 		driver.close();

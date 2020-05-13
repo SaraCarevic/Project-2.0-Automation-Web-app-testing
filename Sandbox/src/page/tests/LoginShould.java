@@ -11,7 +11,7 @@ import org.testng.asserts.SoftAssert;
 
 import page.object.LoginPage;
 import page.object.OpenPage;
-import page.object.ProfilePage;
+import page.object.ProfilePageNavBar;
 import page.object.ReadPaths;
 import page.object.ReadUrls;
 
@@ -98,7 +98,7 @@ public class LoginShould {
 			checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
 			checkOut.assertTrue(driver.getCurrentUrl().contains(open.getUrlProfile()));
 			
-			ProfilePage profile = new ProfilePage(driver, ReadPaths.readXPaths());
+			ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 			profile.clickAccountAvatar();
 			profile.clickLogOut();
 

@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="page.tests.RecoveryPageShould">
+      <class name="page.tests.ProfilePageNavBarShould">
         <methods>
-          <include name="have"/>
-          <include name="recoverProfile"/>
+          <include name="leadTo"/>
+          <include name="haveNavBarItems"/>
+          <include name="launchBrowser"/>
         </methods>
-      </class> <!-- page.tests.RecoveryPageShould -->
+      </class> <!-- page.tests.ProfilePageNavBarShould -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
