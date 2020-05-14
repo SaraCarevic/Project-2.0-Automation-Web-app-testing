@@ -7,7 +7,6 @@
     <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.firefox.FirefoxDriver"/>
     <fullyQualifiedTypeName name="page.object.HomePage"/>
-    <fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
     <fullyQualifiedTypeName name="java.nio.file.Paths"/>
     <fullyQualifiedTypeName name="org.testng.asserts.SoftAssert"/>
     <fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
@@ -22,14 +21,20 @@
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.chrome.ChromeDriver"/>
     <fullyQualifiedTypeName name="org.testng.annotations.Test"/>
-    <fullyQualifiedTypeName name="page.object.LoginPage"/>
-    <fullyQualifiedTypeName name="utility.ExcelUtils"/>
-    <fullyQualifiedTypeName name="org.testng.annotations.BeforeTest"/>
-    <fullyQualifiedTypeName name="page.object.ProfilePage"/>
     <fullyQualifiedTypeName name="page.object.RegistrationPage"/>
-    <fullyQualifiedTypeName name="org.openqa.selenium.By"/>
     <fullyQualifiedTypeName name="page.object.ReadPaths"/>
     <fullyQualifiedTypeName name="page.object.PageHeader"/>
-    <fullyQualifiedTypeName name="org.testng.annotations.Ignore"/>
     <fullyQualifiedTypeName name="page.object.RecoveryProfilePage"/>
+    <fullyQualifiedTypeName name="page.object.ProfilePage"/>
+    <fullyQualifiedTypeName name="org.testng.annotations.BeforeMethod"/>
+    <fullyQualifiedTypeName name="org.testng.annotations.BeforeTest"/>
+    <fullyQualifiedTypeName name="page.object.LoginPage"/>
+    <fullyQualifiedTypeName name="page.object.ProductPage"/>
+    <fullyQualifiedTypeName name="page.object.ProfilePageNavBar"/>
+    <fullyQualifiedTypeName name="utility.ExcelUtils"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.By"/>
+    <fullyQualifiedTypeName name="org.testng.annotations.Ignore"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
 </qualifiedTypeNameHistroy>

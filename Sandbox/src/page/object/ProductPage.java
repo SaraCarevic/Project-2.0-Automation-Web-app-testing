@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ProductPage {
-	
+
 	WebDriver driver;
 	Map<String, String> xPaths;
 	Map<String, String> urls;
@@ -25,7 +25,9 @@ public class ProductPage {
 	private final static String APPROVEDPRODUCTURL = "PRODUCTINFORMATIONAPPROVEDURL";
 	private final static String SUBMIT = "CREATINGPRODUCTSUBMIT";
 	private final static String EDITPRODUCT = "BTNEDITPRODUCT";
-	
+	private final static String SAVEPRODUCTCHANGES = "BTNSAVEPRODUCTCHANGES";
+	private final static String UPDATESUCCEED = "TEXTALLUPDATESUCCEEDEDEDITPRODUCTS";
+
 	private final static String URLEDITPRICE = "PRODUCTEDITPRICEPROFILEPAGE";
 
 	// constructor
@@ -38,11 +40,13 @@ public class ProductPage {
 	public void clickAddNewProduct() {
 		driver.findElement(By.xpath(xPaths.get(ADDNEWPRODUCT))).click();
 	}
+
 	public String getAddNewProductPath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(ADDNEWPRODUCT)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(ADDNEWPRODUCT))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
 	}
 
@@ -50,35 +54,41 @@ public class ProductPage {
 	public void clickCheckboxProduct() {
 		driver.findElement(By.xpath(xPaths.get(CHECKBOXPRODUCT))).click();
 	}
+
 	public String getCheckboxProductPath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(CHECKBOXPRODUCT)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(CHECKBOXPRODUCT))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
 	}
-	
+
 	// method to click delete product
 	public void clickDeleteProduct() {
 		driver.findElement(By.xpath(xPaths.get(DELETEPRODUCT))).click();
 	}
+
 	public String getDeleteProductPath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(DELETEPRODUCT)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(DELETEPRODUCT))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
 	}
-	
+
 	// method to input product name
 	public void typeProductName(String keys) {
 		driver.findElement(By.xpath(xPaths.get(PRODUCTNAME))).sendKeys(keys);
 	}
+
 	public String getProductNamePath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(PRODUCTNAME)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(PRODUCTNAME))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
 	}
 
@@ -86,35 +96,41 @@ public class ProductPage {
 	public void typeProductId(String keys) {
 		driver.findElement(By.xpath(xPaths.get(PRODUCTID))).sendKeys(keys);
 	}
+
 	public String getProductIdPath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(PRODUCTID)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(PRODUCTID))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
 	}
-	
+
 	// method to input short description
 	public void typeShortDescription(String keys) {
 		driver.findElement(By.xpath(xPaths.get(SHORTPRODUCTDESCRIPTION))).sendKeys(keys);
 	}
+
 	public String getShortDescriptionPath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(SHORTPRODUCTDESCRIPTION)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(SHORTPRODUCTDESCRIPTION))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
 	}
-	
+
 	// method to input long description
 	public void typeLongDescription(String keys) {
 		driver.findElement(By.xpath(xPaths.get(LONGPRODUCTDESCRIPTION))).sendKeys(keys);
 	}
+
 	public String getLongDescriptionPath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(LONGPRODUCTDESCRIPTION)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(LONGPRODUCTDESCRIPTION))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
 	}
 
@@ -122,43 +138,49 @@ public class ProductPage {
 	public void typeProductPrice(String keys) {
 		driver.findElement(By.xpath(xPaths.get(PRODUCTPRICE))).sendKeys(keys);
 	}
+
 	public String getProductPricePath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(PRODUCTPRICE)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(PRODUCTPRICE))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
 	}
-	
+
 	// method to input approved url
 	public void typeApprovedUrl(String keys) {
 		driver.findElement(By.xpath(xPaths.get(APPROVEDPRODUCTURL))).sendKeys(keys);
 	}
+
 	public String getApprovedUrlPath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(APPROVEDPRODUCTURL)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(APPROVEDPRODUCTURL))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
-	}	
-	
+	}
+
 	// method to click submit button
 	public void clickSubmit() {
 		driver.findElement(By.xpath(xPaths.get(SUBMIT))).click();
 	}
+
 	public String getSubmitPath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(SUBMIT)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(SUBMIT))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
 	}
-	
+
 	// increasePrice
 	public void priceChange(Integer priceChange) {
 		List<WebElement> product = driver.findElements(By.xpath("//*[contains(@name, 'price')]"));
 		Iterator<WebElement> itr = product.iterator();
-		while(itr.hasNext()) {
+		while (itr.hasNext()) {
 			WebElement element = itr.next();
 			String value = itr.next().getAttribute("value");
 			int incValue = priceChange + Integer.parseInt(value);
@@ -167,26 +189,92 @@ public class ProductPage {
 			element.sendKeys(String.valueOf(incValue));
 		}
 	}
-	
-	// edit price    
+
+	// edit price
 	public void openEditPrice(WebDriver driver) {
 		driver.get(urls.get(URLEDITPRICE));
 	}
+
 	public String getUrlEditPrice() {
 		String url = "Error";
 		for (String i : urls.keySet()) {
-			if (i.equals(URLEDITPRICE)) url = urls.get(i);
-		}		
+			if (i.equals(URLEDITPRICE))
+				url = urls.get(i);
+		}
 		return url;
 	}
+
 	public void clickEditProduct() {
 		driver.findElement(By.xpath(xPaths.get(EDITPRODUCT))).click();
 	}
+
 	public String getEditProductPath() {
 		String xPath = "Error";
 		for (String i : xPaths.keySet()) {
-			if (i.equals(EDITPRODUCT)) xPath = xPaths.get(i);
-		}		
+			if (i.equals(EDITPRODUCT))
+				xPath = xPaths.get(i);
+		}
 		return xPath;
+	}
+	
+	public void increasePrice(Double increase) {
+		/*
+		 * List<WebDriver> products = driver.FindElements(By.xpath("//*[contains(@name, 'price')]"));
+		 * Iterator<WebElement> itr = products.iterator();
+		 * while(itr.hasNext()){
+		 *   WebElement element = itr.next();
+		 *   String oldPrice = itr.next().getAttribute("value");
+		 *   double incPrice = increase + Double.parseDouble(oldPrice);
+		 *   System.out.println(incPrice);
+		 *   element.clear();
+		 *   element.sendKeys(String.valueOf(incPrice);
+		 * }
+		 * */
+		List<WebElement> allElements = driver.findElements(By.cssSelector("input"));
+		for (WebElement anElement : allElements) {
+			if (anElement.getAttribute("type").equals("text")) {
+				anElement.click();
+				String oldPrice = anElement.getAttribute("value");
+				double incPrice = increase + Double.parseDouble(oldPrice);
+				System.out.println(incPrice);
+				anElement.clear();
+				anElement.sendKeys(String.valueOf(incPrice));
+			}
+		}
+	}
+	
+	// save product changes  
+	public void clickSaveProductChanges() {
+		driver.findElement(By.xpath(xPaths.get(SAVEPRODUCTCHANGES))).click();
+	}
+
+	public String getSaveProductChangesPath() {
+		String xPath = "Error";
+		for (String i : xPaths.keySet()) {
+			if (i.equals(SAVEPRODUCTCHANGES))
+				xPath = xPaths.get(i);
+		}
+		return xPath;
+	}
+	
+	// product price edited check 
+	public String getUpdateSucceedPath() {
+		String xPath = "Error";
+		for (String i : xPaths.keySet()) {
+			if (i.equals(UPDATESUCCEED))
+				xPath = xPaths.get(i);
+		}
+		return xPath;
+	}
+
+	// xPath of checkbox is not the same when we have more then one product
+	// checkbox - select al boxes - so we can delete more then one product
+	public void checkAllProducts() {
+		List<WebElement> allElements = driver.findElements(By.cssSelector("input"));
+		for (WebElement anElement : allElements) {
+			if (anElement.getAttribute("type").equals("checkbox")) {
+				anElement.click();
+			}
+		}
 	}
 }

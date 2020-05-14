@@ -54,6 +54,8 @@ PRODUCT~PAGE
 BTNADDNEWPRODUCT~//a[@class='context-btn add']
 ONEPRODUCTCHECKBOXPRODUCT~//input[@name='product_id']
 BTNDELETEPRODUCT~//input[@class='context-btn remove']
+BTNSAVEPRODUCTCHANGES~//input[@class='context-btn save']
+TEXTALLUPDATESUCCEEDEDEDITPRODUCTS~//span[@class='form_valid']
 CREATINGNEWPRODUCT~PRODUCTINFORMATION
 PRODUCTINFORMATIONPRODUCTNAME~//input[@name='name']
 PRODUCTINFORMATIONPRODUCTID~//input[@name='vendor_product_id']
