@@ -26,8 +26,6 @@
     <fullyQualifiedTypeName name="page.object.PageHeader"/>
     <fullyQualifiedTypeName name="page.object.RecoveryProfilePage"/>
     <fullyQualifiedTypeName name="page.object.ProfilePage"/>
-    <fullyQualifiedTypeName name="org.testng.annotations.BeforeMethod"/>
-    <fullyQualifiedTypeName name="org.testng.annotations.BeforeTest"/>
     <fullyQualifiedTypeName name="page.object.LoginPage"/>
     <fullyQualifiedTypeName name="page.object.ProductPage"/>
     <fullyQualifiedTypeName name="page.object.ProfilePageNavBar"/>
@@ -37,4 +35,6 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
     <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="org.testng.annotations.BeforeTest"/>
+    <fullyQualifiedTypeName name="org.testng.annotations.BeforeMethod"/>
 </qualifiedTypeNameHistroy>
