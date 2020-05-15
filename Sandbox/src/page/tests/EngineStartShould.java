@@ -29,8 +29,8 @@ public class EngineStartShould {
 		LogIn login = new LogIn(driver, ReadFile.readXPaths());
 		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
 		utility.ExcelUtils.setWorkSheet(0);
-		login.typeUsername(utility.ExcelUtils.getDataAt(2, 0));
-		login.typePassword(utility.ExcelUtils.getDataAt(2, 2));
+		login.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		login.typePassword(utility.ExcelUtils.getDataAt(1, 2));
 		login.clickLoginButton();
 		return login;
 	}
@@ -41,7 +41,7 @@ public class EngineStartShould {
 		userLogedIn();
 		
 		SoftAssert checkOut = new SoftAssert();
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlProfileHomePage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 
 		checkOut.assertAll();
@@ -54,7 +54,7 @@ public class EngineStartShould {
 		userLogedIn();
 		
 		SoftAssert checkOut = new SoftAssert();
-		checkOut.assertEquals(driver.getCurrentUrl(), start.open);
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlFailedLogInPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlFailedLogInPage()));
 
 		checkOut.assertAll();
@@ -67,8 +67,7 @@ public class EngineStartShould {
 		start.recoveryProfilePage(driver);
 
 		SoftAssert checkOut = new SoftAssert();
-		checkOut.assertEquals(driver.getCurrentUrl(),
-				"https://sandbox.2checkout.com/sandbox/noauth/forgotten_password");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlRecoveryProfilePage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlRecoveryProfilePage()));
 
 		checkOut.assertAll();
@@ -81,7 +80,7 @@ public class EngineStartShould {
 		start.registrationPage(driver);
 
 		SoftAssert checkOut = new SoftAssert();
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://www.2checkout.com/pricing/");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlRegistrationPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlRegistrationPage()));
 
 		checkOut.assertAll();
@@ -95,7 +94,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.accountPage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/acct/");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlAccountPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlAccountPage()));
 
 		checkOut.assertAll();
@@ -110,7 +109,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.salesPage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/sales/");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlSalesPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlSalesPage()));
 
 		checkOut.assertAll();
@@ -125,7 +124,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.productPage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/products/");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlProductPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProductPage()));
 
 		checkOut.assertAll();
@@ -140,7 +139,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.editProductPricePage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/products/edit_products");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlEditProductPricePage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlEditProductPricePage()));
 
 		checkOut.assertAll();
@@ -155,7 +154,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.createNewProductPage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/products/create_product");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlCreateNewProductPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlCreateNewProductPage()));
 
 		checkOut.assertAll();
@@ -170,7 +169,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.deleteProductPage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/products/delete_products");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlDeleteProductPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlDeleteProductPage()));
 
 		checkOut.assertAll();
@@ -185,7 +184,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.shippingPage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/shipping/");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlShippingPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlShippingPage()));
 
 		checkOut.assertAll();
@@ -200,7 +199,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.reportsPage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/reports/");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlReportsPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlReportsPage()));
 
 		checkOut.assertAll();
@@ -215,7 +214,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.apiPage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/api/");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlApiPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlApiPage()));
 
 		checkOut.assertAll();
@@ -230,7 +229,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.notificationPage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/notifications/");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlNotificationPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlNotificationPage()));
 
 		checkOut.assertAll();
@@ -245,7 +244,7 @@ public class EngineStartShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		start.helpPage(driver);
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/help/");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlHelpPage());
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlHelpPage()));
 
 		checkOut.assertAll();

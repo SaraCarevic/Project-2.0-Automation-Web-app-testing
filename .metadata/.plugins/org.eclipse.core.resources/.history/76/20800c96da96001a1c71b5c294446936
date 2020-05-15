@@ -1,0 +1,252 @@
+package page.tests;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import page.object.EngineStart;
+import page.object.LogIn;
+import page.object.ReadFile;
+import page.object.NavigationBar;
+
+
+public class NavigationBarShould {
+	WebDriver driver;	
+	EngineStart start = new EngineStart(driver, ReadFile.readUrls());	
+	//NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
+	
+	public EngineStart launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		start.logInPage(driver);
+		return start;
+	}
+	
+	public LogIn userLogedIn() {
+		LogIn login = new LogIn(driver, ReadFile.readXPaths());
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+		login.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		login.typePassword(utility.ExcelUtils.getDataAt(1, 2));
+		login.clickLoginButton();
+		return login;
+	}
+/*
+	@Test
+	public void haveItems() {
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlProfileHomePage());
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getHomeNavPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getAccountNavPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getSalesNavPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getProductsNavPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getShippingNavPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getReportsNavPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getApiNavPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getNotificationsNavPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getHelpNavPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getAccountAvatarPath())).isEnabled());
+
+		profile.getAccountAvatarPath();
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getLogOutPath())).isEnabled());
+
+		checkOut.assertAll();
+		driver.close();
+	}*/
+
+	@Test 
+	public void leadToHome() {
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
+		//checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlProfileHomePage());
+		profile.clickHomeNav();
+		//checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlProfileHomePage());
+		profile.clickAccountAvatar();
+		profile.clickLogOut();
+		//checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlLogInPage());
+
+		checkOut.assertAll();
+		driver.close();
+	}
+/*
+	@Test @Ignore
+	public void leadToAccount() {
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
+
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		profile.clickAccountNav();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlAccountNavBar());
+
+		profile.clickAccountAvatar();
+		profile.clickLogOut();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlLogin());
+
+		checkOut.assertAll();
+		driver.close();
+	}
+	
+	@Test @Ignore
+	public void leadToSales() {
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
+
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		profile.clickSalesNav();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlSalesNavBar());
+
+		profile.clickAccountAvatar();
+		profile.clickLogOut();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlLogin());
+
+		checkOut.assertAll();
+		driver.close();
+	}
+	
+	@Test @Ignore
+	public void leadToProduct() {
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
+
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		profile.clickProductsNav();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProductsNavBar());
+
+		profile.clickAccountAvatar();
+		profile.clickLogOut();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlLogin());
+
+		checkOut.assertAll();
+		driver.close();
+	}
+	
+	@Test @Ignore
+	public void leadToShipping() {
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
+
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		profile.clickShippingNav();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlShippingNavBar());
+
+		profile.clickAccountAvatar();
+		profile.clickLogOut();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlLogin());
+
+		checkOut.assertAll();
+		driver.close();
+	}
+	
+	@Test @Ignore
+	public void leadToReports() {
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
+
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		profile.clickReportsNav();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlReportsNavBar());
+
+		profile.clickAccountAvatar();
+		profile.clickLogOut();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlLogin());
+
+		checkOut.assertAll();
+		driver.close();
+	}
+	
+	@Test
+	public void leadToApi() {
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
+
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		profile.clickApiNav();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlApiNavBar());
+
+		profile.clickAccountAvatar();
+		profile.clickLogOut();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlLogin());
+
+		checkOut.assertAll();
+		driver.close();
+	}
+	
+	@Test
+	public void leadToNotification() {
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
+
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		profile.clickNotificationsNav();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlNotificationsNavBar());
+
+		profile.clickAccountAvatar();
+		profile.clickLogOut();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlLogin());
+
+		checkOut.assertAll();
+		driver.close();
+	}
+	
+	@Test
+	public void leadToHelp() {
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
+
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		profile.clickHelpNav();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlHelpNavBar());
+
+		profile.clickAccountAvatar();
+		profile.clickLogOut();
+		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlLogin());
+
+		checkOut.assertAll();
+		driver.close();
+	}*/
+}
