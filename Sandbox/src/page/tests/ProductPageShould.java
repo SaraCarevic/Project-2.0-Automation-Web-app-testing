@@ -1,53 +1,54 @@
 package page.tests;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import page.object.LoginPage;
-import page.object.OpenPage;
 import page.object.ProductPage;
+import page.object.ReadFile;
+import page.object.EngineStart;
+import page.object.LogIn;
 import page.object.NavigationBar;
-import page.object.ReadPaths;
-import page.object.ReadUrls;
 
 public class ProductPageShould {
 	WebDriver driver;
-	Map<String, String> urls = new HashMap<>();
-	Map<String, String> xPaths = new HashMap<>();
+	EngineStart start = new EngineStart(driver, ReadFile.readUrls());
 
-	@Test (priority = 1) @Ignore
-	public void createNewProduct() throws InterruptedException {
+	public EngineStart launchBrowser() {
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openLogin(driver);
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		start.logInPage(driver);
+		return start;
+	}
 
-		LoginPage login = new LoginPage(driver, ReadPaths.readXPaths());
+	public LogIn userLogedIn() {
+		LogIn login = new LogIn(driver, ReadFile.readXPaths());
 		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
 		utility.ExcelUtils.setWorkSheet(0);
-		login.typeUsername(utility.ExcelUtils.getDataAt(2, 0));
-		login.typePassword(utility.ExcelUtils.getDataAt(2, 2));
+		login.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		login.typePassword(utility.ExcelUtils.getDataAt(1, 2));
 		login.clickLoginButton();
+		return login;
+	}
+
+	@Test (priority = 1)
+	public void createNewProduct() {
+		launchBrowser();
+		userLogedIn();
+		
+		NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
+		profile.clickProductsNav();
+		ProductPage product = new ProductPage(driver, ReadFile.readXPaths());
+		product.clickAddNewProductBtn();
 		
 		SoftAssert checkOut = new SoftAssert();
-
-		NavigationBar navBar = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
-		navBar.clickProductsNav();
-
-		ProductPage product = new ProductPage(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
-		product.clickAddNewProduct();
-		
-		checkOut.assertEquals(driver.getCurrentUrl(), navBar.getCreateNewProductUrl());
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlCreateNewProductPage());
 
 		utility.ExcelUtils.setExcell("src\\ProductInformation_data.xlsx");
 		utility.ExcelUtils.setWorkSheet(0);
@@ -57,46 +58,32 @@ public class ProductPageShould {
 		product.typeLongDescription(utility.ExcelUtils.getDataAt(1, 3));
 		product.typeProductPrice(utility.ExcelUtils.getDataAt(1, 4));
 		product.typeApprovedUrl(utility.ExcelUtils.getDataAt(1, 5));
-		product.clickSubmit();
-
-		checkOut.assertTrue(driver.findElement(By.xpath(navBar.getUpdateSuccessfulPath())).isDisplayed());
-
-		Thread.sleep(5000);
+		product.clickSubmitBtn();
+		
+		checkOut.assertTrue(driver.findElement(By.xpath(profile.getUpdateSuccessfulPath())).isDisplayed());
 
 		checkOut.assertAll();
 		utility.ExcelUtils.closeExcell();
 		driver.quit();
 	}
 
-	@Test (priority = 2) @Ignore
+	@Test (priority = 2)
 	public void deleteProduct() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openLogin(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
-		LoginPage login = new LoginPage(driver, ReadPaths.readXPaths());
-		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
-		utility.ExcelUtils.setWorkSheet(0);
-		login.typeUsername(utility.ExcelUtils.getDataAt(2, 0));
-		login.typePassword(utility.ExcelUtils.getDataAt(2, 2));
-		login.clickLoginButton();
+		launchBrowser();
+		userLogedIn();
+		
+		NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
+		profile.clickProductsNav();
+		ProductPage product = new ProductPage(driver, ReadFile.readXPaths());
 		
 		SoftAssert checkOut = new SoftAssert();
-
-		NavigationBar navBar = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
-		navBar.clickProductsNav();
-
-		ProductPage product = new ProductPage(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		checkOut.assertTrue(driver.findElement(By.xpath(product.getCheckboxProductPath())).isDisplayed());
 		product.clickCheckboxProduct();
-		checkOut.assertTrue(driver.findElement(By.xpath(product.getDeleteProductPath())).isDisplayed());
-		product.clickDeleteProduct();
-		checkOut.assertTrue(driver.findElement(By.xpath(product.getSubmitPath())).isDisplayed());
-		product.clickSubmit();
-		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlDeletedProduct());
+		checkOut.assertTrue(driver.findElement(By.xpath(product.getDeleteProductBtnPath())).isDisplayed());
+		product.clickDeleteProductBtn();
+		checkOut.assertTrue(driver.findElement(By.xpath(product.getSubmitBtnPath())).isDisplayed());
+		product.clickSubmitBtn();
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlDeleteProductPage());
 		checkOut.assertTrue(driver.findElement(By.xpath("//td[contains(text(),'Deleted')]")).isDisplayed());
 		
 		Thread.sleep(5000);
@@ -106,31 +93,18 @@ public class ProductPageShould {
 		driver.quit();
 	}
  
-	@Test (priority = 1) @Ignore
+	@Test (priority = 3) 
 	public void createMultipleNewProduct() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openLogin(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
-		LoginPage login = new LoginPage(driver, ReadPaths.readXPaths());
-		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
-		utility.ExcelUtils.setWorkSheet(0);
-		login.typeUsername(utility.ExcelUtils.getDataAt(2, 0));
-		login.typePassword(utility.ExcelUtils.getDataAt(2, 2));
-		login.clickLoginButton();
+		launchBrowser();
+		userLogedIn();
+		
+		NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
+		profile.clickProductsNav();
+		ProductPage product = new ProductPage(driver, ReadFile.readXPaths());
+		product.clickAddNewProductBtn();
 		
 		SoftAssert checkOut = new SoftAssert();
-		
-		NavigationBar navBar = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
-		navBar.clickProductsNav();
-
-		ProductPage product = new ProductPage(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
-		product.clickAddNewProduct();	
-
-		checkOut.assertEquals(driver.getCurrentUrl(), navBar.getCreateNewProductUrl());
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlCreateNewProductPage());
 
 		utility.ExcelUtils.setExcell("src\\ProductInformation_data.xlsx");
 		utility.ExcelUtils.setWorkSheet(0);
@@ -141,13 +115,13 @@ public class ProductPageShould {
 			product.typeLongDescription(utility.ExcelUtils.getDataAt(i, 3));
 			product.typeProductPrice(utility.ExcelUtils.getDataAt(i, 4));
 			product.typeApprovedUrl(utility.ExcelUtils.getDataAt(i, 5));
-			product.clickSubmit();
+			product.clickSubmitBtn();
 
-			checkOut.assertTrue(driver.findElement(By.xpath(navBar.getUpdateSuccessfulPath())).isDisplayed());
+			checkOut.assertTrue(driver.findElement(By.xpath(profile.getUpdateSuccessfulPath())).isDisplayed());
 			Thread.sleep(5000);
 			if (i < utility.ExcelUtils.getRowNumber() - 1) {
-				navBar.clickProductsNav();
-				product.clickAddNewProduct();
+				profile.clickProductsNav();
+				product.clickAddNewProductBtn();
 			}
 		}
 		checkOut.assertAll();
@@ -155,72 +129,21 @@ public class ProductPageShould {
 		driver.quit();
 	}
 	
-	@Test @Ignore
-	public void deleteAllProducts() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openLogin(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
-		LoginPage login = new LoginPage(driver, ReadPaths.readXPaths());
-		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
-		utility.ExcelUtils.setWorkSheet(0);
-		login.typeUsername(utility.ExcelUtils.getDataAt(2, 0));
-		login.typePassword(utility.ExcelUtils.getDataAt(2, 2));
-		login.clickLoginButton();
+	@Test (priority = 4) 
+	public void increasePrice(){
+		launchBrowser();
+		userLogedIn();
 		
-		SoftAssert checkOut = new SoftAssert();
-		
-		NavigationBar navBar = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
-		navBar.clickProductsNav();
-
-		ProductPage product = new ProductPage(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
-		product.checkAllProducts();
-		Thread.sleep(5000);
-		product.clickDeleteProduct();
-		product.clickSubmit();
-		
-		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlDeletedProduct());
-		checkOut.assertTrue(driver.findElement(By.xpath("//td[contains(text(),'Deleted')]")).isDisplayed());
-		
-		Thread.sleep(5000);
-		
-		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
-	}
-	
-	@Test (priority = 2)
-	public void increasePrice() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openLogin(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
-		LoginPage login = new LoginPage(driver, ReadPaths.readXPaths());
-		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
-		utility.ExcelUtils.setWorkSheet(0);
-		login.typeUsername(utility.ExcelUtils.getDataAt(2, 0));
-		login.typePassword(utility.ExcelUtils.getDataAt(2, 2));
-		login.clickLoginButton();
-		NavigationBar navBar = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
-		ProductPage product = new ProductPage(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
-		navBar.clickProductsNav();
-		product.clickEditProduct();		
+		NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
+		profile.clickProductsNav();
+		ProductPage product = new ProductPage(driver, ReadFile.readXPaths());
+		product.clickEditProductBtn();		
 		product.increasePrice(10.00);	
-		Thread.sleep(5000);
 		
-		SoftAssert checkOut = new SoftAssert();
-		
-		checkOut.assertTrue(driver.findElement(By.xpath(product.getSaveProductChangesPath())).isDisplayed());
-		product.clickSaveProductChanges();
+		SoftAssert checkOut = new SoftAssert();	
+		checkOut.assertTrue(driver.findElement(By.xpath(product.getSaveProductChangesBtnPath())).isDisplayed());
+		product.clickSaveProductChangesBtn();
 		checkOut.assertTrue(driver.findElement(By.xpath(product.getUpdateSucceedPath())).isDisplayed());
-		
-		Thread.sleep(5000);
 		
 		checkOut.assertAll();
 		driver.quit();

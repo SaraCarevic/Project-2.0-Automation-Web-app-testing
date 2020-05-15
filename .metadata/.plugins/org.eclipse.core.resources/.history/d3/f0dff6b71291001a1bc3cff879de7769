@@ -1,9 +1,0 @@
-package page.tests;
-
-import org.testng.annotations.Test;
-
-public class TestRegistration {
-  @Test
-  public void ofOneUser() {
-  }
-}

@@ -1,7 +1,5 @@
 package page.tests;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -9,65 +7,160 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import page.object.OpenPage;
+import page.object.ReadFile;
+import page.object.EngineStart;
 import page.object.NavigationBar;
-import page.object.ReadPaths;
-import page.object.ReadUrls;
-import page.object.RegistrationPage;
+import page.object.Registration;
 
 public class RegistrationShould {
 	WebDriver driver;
-	Map<String, String> urls = new HashMap<>();
-	Map<String, String> xPaths = new HashMap<>();
+	EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+
+	public EngineStart launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		start.logInPage(driver);
+		return start;
+	}
 
 	@Test
-	public void NotRegisterWithoutUsernameAndPassword() {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openRegistration(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
-		SoftAssert checkOut = new SoftAssert();
-
-		RegistrationPage register = new RegistrationPage(driver, ReadPaths.readXPaths());
+	public void notRegisterWithoutData() {
+		launchBrowser();
+		Registration register = new Registration(driver, ReadFile.readXPaths());
 		register.clickSignUp();
 
+		SoftAssert checkOut = new SoftAssert();
 		checkOut.assertNotEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
-		checkOut.assertFalse(driver.getCurrentUrl().contains(open.getUrlProfile()));
+		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+	
+	@Test
+	public void notRegisterWithoutUsername() {
+		launchBrowser();
+		Registration register = new Registration(driver, ReadFile.readXPaths());
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+		register.typeEmail(utility.ExcelUtils.getDataAt(1, 1));
+		register.typePassword(utility.ExcelUtils.getDataAt(1, 2));
+		register.typeCofirmPassword(utility.ExcelUtils.getDataAt(1, 2));
+		register.chooseHaveWebsite("www.website.com");
+		register.clickSignUp();
+		
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertNotEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+		
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+	
+	@Test
+	public void notRegisterWithoutEmail() {
+		launchBrowser();
+		Registration register = new Registration(driver, ReadFile.readXPaths());
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+		register.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		register.typePassword(utility.ExcelUtils.getDataAt(1, 2));
+		register.typeCofirmPassword(utility.ExcelUtils.getDataAt(1, 2));
+		register.chooseHaveWebsite("www.website.com");
+		register.clickSignUp();
+		
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertNotEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+		
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+	
+	@Test
+	public void notRegisterWithoutPassword() {
+		launchBrowser();
+		Registration register = new Registration(driver, ReadFile.readXPaths());
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+		register.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		register.typeEmail(utility.ExcelUtils.getDataAt(1, 1));
+		register.typeCofirmPassword(utility.ExcelUtils.getDataAt(1, 2));
+		register.chooseHaveWebsite("www.website.com");
+		register.clickSignUp();
+		
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertNotEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+		
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+	
+	@Test
+	public void notRegisterWithoutConfirmPassword() {
+		launchBrowser();
+		Registration register = new Registration(driver, ReadFile.readXPaths());
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+		register.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		register.typeEmail(utility.ExcelUtils.getDataAt(1, 1));
+		register.typePassword(utility.ExcelUtils.getDataAt(1, 2));
+		register.chooseHaveWebsite("www.website.com");
+		register.clickSignUp();
+		
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertNotEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+		
 		checkOut.assertAll();
 		utility.ExcelUtils.closeExcell();
 		driver.quit();
 	}
 
 	@Test
-	public void registerOneUser() {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openRegistration(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
-		SoftAssert checkOut = new SoftAssert();
-
-		RegistrationPage register = new RegistrationPage(driver, ReadPaths.readXPaths());
-
+	public void notRegisterWithoutCheckingSomethigAboutYou() {
+		launchBrowser();
+		Registration register = new Registration(driver, ReadFile.readXPaths());
 		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
 		utility.ExcelUtils.setWorkSheet(0);
-
+		register.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		register.typeEmail(utility.ExcelUtils.getDataAt(1, 1));
+		register.typePassword(utility.ExcelUtils.getDataAt(1, 2));
+		register.typeCofirmPassword(utility.ExcelUtils.getDataAt(1, 2));
+		register.clickSignUp();
+		
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertNotEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+		
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+	
+	@Test
+	public void registerOneUser() {
+		launchBrowser();
+		Registration register = new Registration(driver, ReadFile.readXPaths());
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
 		register.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
 		register.typeEmail(utility.ExcelUtils.getDataAt(1, 1));
 		register.typePassword(utility.ExcelUtils.getDataAt(1, 2));
 		register.typeCofirmPassword(utility.ExcelUtils.getDataAt(1, 2));
 		register.chooseHaveWebsite("www.website.com");
-
 		register.clickSignUp();
-
+		
+		SoftAssert checkOut = new SoftAssert();
 		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
-		checkOut.assertTrue(driver.getCurrentUrl().contains(open.getUrlProfile()));
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 
 		checkOut.assertAll();
 		utility.ExcelUtils.closeExcell();
@@ -76,22 +169,15 @@ public class RegistrationShould {
 
 	@Test
 	public void registerMultipleUsers() {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openRegistration(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
-		SoftAssert checkOut = new SoftAssert();
-
-		RegistrationPage register = new RegistrationPage(driver, ReadPaths.readXPaths());
-
+		launchBrowser();		
+		start.registrationPage(driver);
 		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
 		utility.ExcelUtils.setWorkSheet(0);
+		
+		SoftAssert checkOut = new SoftAssert();
 
 		for (int i = 1; i < utility.ExcelUtils.getRowNumber(); i++) {
-			
+			Registration register = new Registration(driver, ReadFile.readXPaths());
 			register.typeUsername(utility.ExcelUtils.getDataAt(i, 0));
 			register.typeEmail(utility.ExcelUtils.getDataAt(i, 1));
 			register.typePassword(utility.ExcelUtils.getDataAt(i, 2));
@@ -105,13 +191,13 @@ public class RegistrationShould {
 			register.clickSignUp();
 
 			checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
-			checkOut.assertTrue(driver.getCurrentUrl().contains(open.getUrlProfile()));
+			checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 			
-			NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+			NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
 			profile.clickAccountAvatar();
 			profile.clickLogOut();
 			
-			if (i < utility.ExcelUtils.getRowNumber() - 1) open.openRegistration(driver);
+			if (i < utility.ExcelUtils.getRowNumber() - 1) start.registrationPage(driver);;
 
 		}
 		checkOut.assertAll();
