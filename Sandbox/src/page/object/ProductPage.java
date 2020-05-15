@@ -12,8 +12,7 @@ public class ProductPage {
 
 	WebDriver driver;
 	Map<String, String> xPaths;
-	Map<String, String> urls;
-
+	
 	private final static String ADDNEWPRODUCT = "BTNADDNEWPRODUCT";
 	private final static String CHECKBOXPRODUCT = "ONEPRODUCTCHECKBOXPRODUCT";
 	private final static String DELETEPRODUCT = "BTNDELETEPRODUCT";
@@ -28,151 +27,109 @@ public class ProductPage {
 	private final static String SAVEPRODUCTCHANGES = "BTNSAVEPRODUCTCHANGES";
 	private final static String UPDATESUCCEED = "TEXTALLUPDATESUCCEEDEDEDITPRODUCTS";
 
-	private final static String URLEDITPRICE = "PRODUCTEDITPRICEPROFILEPAGE";
-
 	// constructor
-	public ProductPage(WebDriver driver, Map<String, String> xPaths, Map<String, String> urls) {
+	public ProductPage(WebDriver driver, Map<String, String> xPaths) {
 		this.driver = driver;
 		this.xPaths = xPaths;
 	}
 
 	// method to click add new product
-	public void clickAddNewProduct() {
-		driver.findElement(By.xpath(xPaths.get(ADDNEWPRODUCT))).click();
+	public void clickAddNewProductBtn() {
+		driver.findElement(By.xpath(ReadFile.getXPath(ADDNEWPRODUCT))).click();
 	}
 
-	public String getAddNewProductPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(ADDNEWPRODUCT))
-				xPath = xPaths.get(i);
-		}
+	public String getAddNewProductBtnPath() {
+		String xPath = ReadFile.getXPath(ADDNEWPRODUCT);
 		return xPath;
 	}
 
 	// method to click checkbox product when we have ONLY ONE product!!!
 	public void clickCheckboxProduct() {
-		driver.findElement(By.xpath(xPaths.get(CHECKBOXPRODUCT))).click();
+		driver.findElement(By.xpath(ReadFile.getXPath(CHECKBOXPRODUCT))).click();
 	}
 
 	public String getCheckboxProductPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(CHECKBOXPRODUCT))
-				xPath = xPaths.get(i);
-		}
+		String xPath = ReadFile.getXPath(CHECKBOXPRODUCT);
 		return xPath;
 	}
 
 	// method to click delete product
-	public void clickDeleteProduct() {
-		driver.findElement(By.xpath(xPaths.get(DELETEPRODUCT))).click();
+	public void clickDeleteProductBtn() {
+		driver.findElement(By.xpath(ReadFile.getXPath(DELETEPRODUCT))).click();
 	}
 
-	public String getDeleteProductPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(DELETEPRODUCT))
-				xPath = xPaths.get(i);
-		}
+	public String getDeleteProductBtnPath() {
+		String xPath = ReadFile.getXPath(DELETEPRODUCT);
 		return xPath;
 	}
 
 	// method to input product name
 	public void typeProductName(String keys) {
-		driver.findElement(By.xpath(xPaths.get(PRODUCTNAME))).sendKeys(keys);
+		driver.findElement(By.xpath(ReadFile.getXPath(PRODUCTNAME))).sendKeys(keys);
 	}
 
 	public String getProductNamePath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(PRODUCTNAME))
-				xPath = xPaths.get(i);
-		}
+		String xPath = ReadFile.getXPath(PRODUCTNAME);
 		return xPath;
 	}
 
 	// method to input product id
 	public void typeProductId(String keys) {
-		driver.findElement(By.xpath(xPaths.get(PRODUCTID))).sendKeys(keys);
+		driver.findElement(By.xpath(ReadFile.getXPath(PRODUCTID))).sendKeys(keys);
 	}
 
 	public String getProductIdPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(PRODUCTID))
-				xPath = xPaths.get(i);
-		}
+		String xPath = ReadFile.getXPath(PRODUCTID);
 		return xPath;
 	}
 
 	// method to input short description
 	public void typeShortDescription(String keys) {
-		driver.findElement(By.xpath(xPaths.get(SHORTPRODUCTDESCRIPTION))).sendKeys(keys);
+		driver.findElement(By.xpath(ReadFile.getXPath(SHORTPRODUCTDESCRIPTION))).sendKeys(keys);
 	}
 
 	public String getShortDescriptionPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(SHORTPRODUCTDESCRIPTION))
-				xPath = xPaths.get(i);
-		}
+		String xPath = ReadFile.getXPath(SHORTPRODUCTDESCRIPTION);
 		return xPath;
 	}
 
 	// method to input long description
 	public void typeLongDescription(String keys) {
-		driver.findElement(By.xpath(xPaths.get(LONGPRODUCTDESCRIPTION))).sendKeys(keys);
+		driver.findElement(By.xpath(ReadFile.getXPath(LONGPRODUCTDESCRIPTION))).sendKeys(keys);
 	}
 
 	public String getLongDescriptionPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(LONGPRODUCTDESCRIPTION))
-				xPath = xPaths.get(i);
-		}
+		String xPath = ReadFile.getXPath(LONGPRODUCTDESCRIPTION);
 		return xPath;
 	}
 
 	// method to input product price
 	public void typeProductPrice(String keys) {
-		driver.findElement(By.xpath(xPaths.get(PRODUCTPRICE))).sendKeys(keys);
+		driver.findElement(By.xpath(ReadFile.getXPath(PRODUCTPRICE))).sendKeys(keys);
 	}
 
 	public String getProductPricePath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(PRODUCTPRICE))
-				xPath = xPaths.get(i);
-		}
+		String xPath = ReadFile.getXPath(PRODUCTPRICE);
 		return xPath;
 	}
 
 	// method to input approved url
 	public void typeApprovedUrl(String keys) {
-		driver.findElement(By.xpath(xPaths.get(APPROVEDPRODUCTURL))).sendKeys(keys);
+		driver.findElement(By.xpath(ReadFile.getXPath(APPROVEDPRODUCTURL))).sendKeys(keys);
 	}
 
 	public String getApprovedUrlPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(APPROVEDPRODUCTURL))
-				xPath = xPaths.get(i);
-		}
+		String xPath = ReadFile.getXPath(APPROVEDPRODUCTURL);
 		return xPath;
 	}
 
 	// method to click submit button
-	public void clickSubmit() {
-		driver.findElement(By.xpath(xPaths.get(SUBMIT))).click();
+	public void clickSubmitBtn() {
+		driver.findElement(By.xpath(ReadFile.getXPath(SUBMIT))).click();
 	}
 
-	public String getSubmitPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(SUBMIT))
-				xPath = xPaths.get(i);
-		}
+	public String getSubmitBtnPath() {
+		String xPath = ReadFile.getXPath(SUBMIT);
 		return xPath;
 	}
 
@@ -190,30 +147,13 @@ public class ProductPage {
 		}
 	}
 
-	// edit price
-	public void openEditPrice(WebDriver driver) {
-		driver.get(urls.get(URLEDITPRICE));
+	// edit product button
+	public void clickEditProductBtn() {
+		driver.findElement(By.xpath(ReadFile.getXPath(EDITPRODUCT))).click();
 	}
 
-	public String getUrlEditPrice() {
-		String url = "Error";
-		for (String i : urls.keySet()) {
-			if (i.equals(URLEDITPRICE))
-				url = urls.get(i);
-		}
-		return url;
-	}
-
-	public void clickEditProduct() {
-		driver.findElement(By.xpath(xPaths.get(EDITPRODUCT))).click();
-	}
-
-	public String getEditProductPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(EDITPRODUCT))
-				xPath = xPaths.get(i);
-		}
+	public String getEditProductBtnPath() {
+		String xPath = ReadFile.getXPath(EDITPRODUCT);
 		return xPath;
 	}
 	
@@ -244,26 +184,18 @@ public class ProductPage {
 	}
 	
 	// save product changes  
-	public void clickSaveProductChanges() {
-		driver.findElement(By.xpath(xPaths.get(SAVEPRODUCTCHANGES))).click();
+	public void clickSaveProductChangesBtn() {
+		driver.findElement(By.xpath(ReadFile.getXPath(SAVEPRODUCTCHANGES))).click();
 	}
 
-	public String getSaveProductChangesPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(SAVEPRODUCTCHANGES))
-				xPath = xPaths.get(i);
-		}
+	public String getSaveProductChangesBtnPath() {
+		String xPath = ReadFile.getXPath(SAVEPRODUCTCHANGES);
 		return xPath;
 	}
 	
 	// product price edited check 
 	public String getUpdateSucceedPath() {
-		String xPath = "Error";
-		for (String i : xPaths.keySet()) {
-			if (i.equals(UPDATESUCCEED))
-				xPath = xPaths.get(i);
-		}
+		String xPath = ReadFile.getXPath(UPDATESUCCEED);
 		return xPath;
 	}
 

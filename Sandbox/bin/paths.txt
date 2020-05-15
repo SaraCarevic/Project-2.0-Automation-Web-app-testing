@@ -11,7 +11,7 @@ TXTUSERNAMERESETPAGE~//input[@placeholder='Username']
 BTNEMAILRESETPAGE~//input[@class='btn blue']
 LINKLOGINRESETPAGE~//a[contains(text(),'Log in')]
 BTNCONFIRMLOGINRESETPAGE~//a[@id='confirm-login']
-SIGNUP~PAGE
+REGISTRATION~PAGE
 TXTUSERNAMESIGNUPPAGE~//a[contains(text(),'Privacy Policy')]
 TXTEMAILSIGNUPPAGE~//input[@id='email']
 TXTPASSWORDSIGNUPPAGE~//input[@id='password']
@@ -38,7 +38,7 @@ HELPICONSUPPORTHEADER~//a[contains(text(),'Support')]
 HELPICONCONTACTUSHEADER~//a[contains(text(),'Contact Us')]
 HELPICONKNOWLEDGEBASEHEADER~//a[contains(text(),'Knowledge Base')]
 HELPICONDOCUMENTATIONHEADER~//a[contains(text(),'Documentation')]
-PROFILE~PAGE
+PROFILENAVBAR~PAGE
 NAVBARHOMEPROFILEPAGE~//a[contains(text(),'home')]
 NAVBARACCOUNTPROFILEPAGE~//a[contains(text(),'Account')]
 NAVBARSALESPROFILEPAGE~//a[contains(text(),'Sales')]

@@ -1,42 +1,91 @@
 package page.tests;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import page.object.LoginPage;
-import page.object.OpenPage;
-import page.object.ProfilePageNavBar;
-import page.object.ReadPaths;
-import page.object.ReadUrls;
+import page.object.EngineStart;
+import page.object.LogIn;
+import page.object.ReadFile;
+import page.object.NavigationBar;
 
-public class LoginShould {
+public class LogInShould {
 	WebDriver driver;
-	Map<String, String> urls = new HashMap<>();
-	Map<String, String> xPaths = new HashMap<>();
+	EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+
+	NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
+
+	public EngineStart launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		start.logInPage(driver);
+		return start;
+	}
 
 	@Test
 	public void NotLogWithoutUsernameAndPassword() {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openLogin(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		launchBrowser();
+
+		SoftAssert checkOut = new SoftAssert();
+		LogIn login = new LogIn(driver, ReadFile.readXPaths());
+		login.clickLoginButton();
+
+		//checkOut.assertNotEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertNotEquals(driver.getCurrentUrl(), start.getUrlProfileHomePage());
+		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+		//checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/login");
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlFailedLogInPage());
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlFailedLogInPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test
+	public void NotLogWithoutUsername() {
+		launchBrowser();
 
 		SoftAssert checkOut = new SoftAssert();
 
-		LoginPage login = new LoginPage(driver, ReadPaths.readXPaths());
-
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+		LogIn login = new LogIn(driver, ReadFile.readXPaths());
+		login.typePassword(utility.ExcelUtils.getDataAt(2, 2));
 		login.clickLoginButton();
 
-		checkOut.assertNotEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
-		checkOut.assertFalse(driver.getCurrentUrl().contains(open.getUrlProfile()));
+		//checkOut.assertNotEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+		//checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/login");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlFailedLogInPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test
+	public void NotLogWithoutPassword() {
+		launchBrowser();
+
+		SoftAssert checkOut = new SoftAssert();
+
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+		LogIn login = new LogIn(driver, ReadFile.readXPaths());
+		login.typeUsername(utility.ExcelUtils.getDataAt(2, 0));
+		login.clickLoginButton();
+		
+		//checkOut.assertNotEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+		//checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/login");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlFailedLogInPage()));
 
 		checkOut.assertAll();
 		utility.ExcelUtils.closeExcell();
@@ -45,27 +94,19 @@ public class LoginShould {
 
 	@Test
 	public void logOneUser() {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openLogin(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		launchBrowser();
 
 		SoftAssert checkOut = new SoftAssert();
 
-		LoginPage login = new LoginPage(driver, ReadPaths.readXPaths());
-
 		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
 		utility.ExcelUtils.setWorkSheet(0);
-
-		login.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
-		login.typePassword(utility.ExcelUtils.getDataAt(1, 2));
-
+		LogIn login = new LogIn(driver, ReadFile.readXPaths());
+		login.typeUsername(utility.ExcelUtils.getDataAt(2, 0));
+		login.typePassword(utility.ExcelUtils.getDataAt(2, 2));
 		login.clickLoginButton();
 
-		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
-		checkOut.assertTrue(driver.getCurrentUrl().contains(open.getUrlProfile()));
+		//checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 
 		checkOut.assertAll();
 		utility.ExcelUtils.closeExcell();
@@ -73,18 +114,12 @@ public class LoginShould {
 	}
 
 	@Test
+	@Ignore
 	public void logMultipleUsers() {
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		OpenPage open = new OpenPage(driver, ReadUrls.readUrls());
-		open.openLogin(driver);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		launchBrowser();
 
 		SoftAssert checkOut = new SoftAssert();
-
-		LoginPage login = new LoginPage(driver, ReadPaths.readXPaths());
-
+		LogIn login = new LogIn(driver, ReadFile.readXPaths());
 		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
 		utility.ExcelUtils.setWorkSheet(0);
 
@@ -92,13 +127,11 @@ public class LoginShould {
 
 			login.typeUsername(utility.ExcelUtils.getDataAt(i, 0));
 			login.typePassword(utility.ExcelUtils.getDataAt(i, 2));
-
 			login.clickLoginButton();
 
-			checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
-			checkOut.assertTrue(driver.getCurrentUrl().contains(open.getUrlProfile()));
-			
-			ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+			//checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+			checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+
 			profile.clickAccountAvatar();
 			profile.clickLogOut();
 

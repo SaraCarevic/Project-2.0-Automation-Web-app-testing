@@ -1,46 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="4" total="5" passed="0" failed="1" skipped="0">
+<testng-results ignored="1" total="5" passed="3" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-05-14T14:07:04 CEST" name="Default suite" finished-at="2020-05-14T14:07:30 CEST" duration-ms="25921">
+  <suite started-at="2020-05-15T19:51:17 CEST" name="Default suite" finished-at="2020-05-15T19:52:05 CEST" duration-ms="47995">
     <groups>
     </groups>
-    <test started-at="2020-05-14T14:07:04 CEST" name="Default test" finished-at="2020-05-14T14:07:30 CEST" duration-ms="25921">
-      <class name="page.tests.ProductPageShould">
-        <test-method signature="increasePrice()[pri:2, instance:page.tests.ProductPageShould@222114ba]" started-at="2020-05-14T14:07:04 CEST" name="increasePrice" finished-at="2020-05-14T14:07:29 CEST" duration-ms="25869" status="FAIL">
-          <exception class="org.openqa.selenium.ElementNotInteractableException">
+    <test started-at="2020-05-15T19:51:17 CEST" name="Default test" finished-at="2020-05-15T19:52:05 CEST" duration-ms="47995">
+      <class name="page.tests.LogInShould">
+        <test-method signature="NotLogWithoutPassword()[pri:0, instance:page.tests.LogInShould@18ce0030]" started-at="2020-05-15T19:51:17 CEST" name="NotLogWithoutPassword" finished-at="2020-05-15T19:51:28 CEST" duration-ms="11599" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- NotLogWithoutPassword -->
+        <test-method signature="NotLogWithoutUsername()[pri:0, instance:page.tests.LogInShould@18ce0030]" started-at="2020-05-15T19:51:28 CEST" name="NotLogWithoutUsername" finished-at="2020-05-15T19:51:39 CEST" duration-ms="10774" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- NotLogWithoutUsername -->
+        <test-method signature="NotLogWithoutUsernameAndPassword()[pri:0, instance:page.tests.LogInShould@18ce0030]" started-at="2020-05-15T19:51:39 CEST" name="NotLogWithoutUsernameAndPassword" finished-at="2020-05-15T19:51:49 CEST" duration-ms="9661" status="FAIL">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[element not interactable
-  (Session info: chrome=81.0.4044.138)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:48'
-System info: host: 'DESKTOP-KESI400', ip: '192.168.1.109', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '13.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.138, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\TETKES~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:64533}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: d4cd8c7245f857707fd7f6f4eea3dbf9]]>
+              <![CDATA[The following asserts failed:
+expected [https://sandbox.2checkout.com/sandbox] but found [https://sandbox.2checkout.com/sandbox/login]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementNotInteractableException: element not interactable
-  (Session info: chrome=81.0.4044.138)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:48'
-System info: host: 'DESKTOP-KESI400', ip: '192.168.1.109', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '13.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.138, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\TETKES~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:64533}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: d4cd8c7245f857707fd7f6f4eea3dbf9
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
-at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
-at page.object.ProductPage.increasePrice(ProductPage.java:223)
-at page.tests.ProductPageShould.increasePrice(ProductPageShould.java:214)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [https://sandbox.2checkout.com/sandbox] but found [https://sandbox.2checkout.com/sandbox/login]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+at page.tests.LogInShould.NotLogWithoutUsernameAndPassword(LogInShould.java:46)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -71,11 +57,15 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.ElementNotInteractableException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- increasePrice -->
-      </class> <!-- page.tests.ProductPageShould -->
+        </test-method> <!-- NotLogWithoutUsernameAndPassword -->
+        <test-method signature="logOneUser()[pri:0, instance:page.tests.LogInShould@18ce0030]" started-at="2020-05-15T19:51:49 CEST" name="logOneUser" finished-at="2020-05-15T19:52:05 CEST" duration-ms="15907" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logOneUser -->
+      </class> <!-- page.tests.LogInShould -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

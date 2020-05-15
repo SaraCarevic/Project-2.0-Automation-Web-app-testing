@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 import page.object.LoginPage;
 import page.object.OpenPage;
 import page.object.ProductPage;
-import page.object.ProfilePageNavBar;
+import page.object.NavigationBar;
 import page.object.ReadPaths;
 import page.object.ReadUrls;
 
@@ -41,7 +41,7 @@ public class ProductPageShould {
 		
 		SoftAssert checkOut = new SoftAssert();
 
-		ProfilePageNavBar navBar = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar navBar = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		navBar.clickProductsNav();
 
 		ProductPage product = new ProductPage(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
@@ -86,7 +86,7 @@ public class ProductPageShould {
 		
 		SoftAssert checkOut = new SoftAssert();
 
-		ProfilePageNavBar navBar = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar navBar = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		navBar.clickProductsNav();
 
 		ProductPage product = new ProductPage(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
@@ -124,7 +124,7 @@ public class ProductPageShould {
 		
 		SoftAssert checkOut = new SoftAssert();
 		
-		ProfilePageNavBar navBar = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar navBar = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		navBar.clickProductsNav();
 
 		ProductPage product = new ProductPage(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
@@ -173,7 +173,7 @@ public class ProductPageShould {
 		
 		SoftAssert checkOut = new SoftAssert();
 		
-		ProfilePageNavBar navBar = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar navBar = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		navBar.clickProductsNav();
 
 		ProductPage product = new ProductPage(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
@@ -207,7 +207,7 @@ public class ProductPageShould {
 		login.typeUsername(utility.ExcelUtils.getDataAt(2, 0));
 		login.typePassword(utility.ExcelUtils.getDataAt(2, 2));
 		login.clickLoginButton();
-		ProfilePageNavBar navBar = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar navBar = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		ProductPage product = new ProductPage(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		navBar.clickProductsNav();
 		product.clickEditProduct();		

@@ -1,5 +1,6 @@
 START~PAGE
 SANDBOXLOGINPAGE~https://sandbox.2checkout.com/sandbox
+FAILEDLOGIN~https://sandbox.2checkout.com/sandbox/login
 RECOVERPROFILE~PAGE
 FORGOTPASSWORDPAGE~https://sandbox.2checkout.com/sandbox/noauth/forgotten_password
 SIGNUP~PAGE

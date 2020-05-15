@@ -12,7 +12,7 @@ import org.testng.asserts.SoftAssert;
 
 import page.object.LoginPage;
 import page.object.OpenPage;
-import page.object.ProfilePageNavBar;
+import page.object.NavigationBar;
 import page.object.ReadPaths;
 import page.object.ReadUrls;
 
@@ -40,7 +40,7 @@ public class ProfilePageNavBarShould {
 
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
-		ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		checkOut.assertTrue(driver.findElement(By.xpath(profile.getHomeNavPath())).isEnabled());
 		checkOut.assertTrue(driver.findElement(By.xpath(profile.getAccountNavPath())).isEnabled());
 		checkOut.assertTrue(driver.findElement(By.xpath(profile.getSalesNavPath())).isEnabled());
@@ -78,7 +78,7 @@ public class ProfilePageNavBarShould {
 
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
-		ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		profile.clickHomeNav();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
@@ -109,7 +109,7 @@ public class ProfilePageNavBarShould {
 
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
-		ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		profile.clickAccountNav();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlAccountNavBar());
 
@@ -140,7 +140,7 @@ public class ProfilePageNavBarShould {
 
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
-		ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		profile.clickSalesNav();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlSalesNavBar());
 
@@ -171,7 +171,7 @@ public class ProfilePageNavBarShould {
 
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
-		ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		profile.clickProductsNav();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProductsNavBar());
 
@@ -202,7 +202,7 @@ public class ProfilePageNavBarShould {
 
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
-		ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		profile.clickShippingNav();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlShippingNavBar());
 
@@ -233,7 +233,7 @@ public class ProfilePageNavBarShould {
 
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
-		ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		profile.clickReportsNav();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlReportsNavBar());
 
@@ -264,7 +264,7 @@ public class ProfilePageNavBarShould {
 
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
-		ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		profile.clickApiNav();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlApiNavBar());
 
@@ -295,7 +295,7 @@ public class ProfilePageNavBarShould {
 
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
-		ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		profile.clickNotificationsNav();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlNotificationsNavBar());
 
@@ -326,7 +326,7 @@ public class ProfilePageNavBarShould {
 
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlProfile());
 
-		ProfilePageNavBar profile = new ProfilePageNavBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
+		NavigationBar profile = new NavigationBar(driver, ReadPaths.readXPaths(), ReadUrls.readUrls());
 		profile.clickHelpNav();
 		checkOut.assertEquals(driver.getCurrentUrl(), open.getUrlHelpNavBar());
 

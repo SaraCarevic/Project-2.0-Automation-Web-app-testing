@@ -1,0 +1,299 @@
+package page.tests;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Ignore;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import page.object.EngineStart;
+import page.object.LogIn;
+import page.object.ReadFile;
+
+public class EngineStartShould {
+	Map<String, String> urls;
+	WebDriver driver;
+	EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+	LogIn login = new LogIn(driver, ReadFile.readXPaths());
+	SoftAssert checkOut = new SoftAssert();
+
+	public EngineStart launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		driver = new ChromeDriver();
+		//driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		start.logInPage(driver);
+		return start;
+	}
+
+	public LogIn userLogedIn() {
+		LogIn login = new LogIn(driver, ReadFile.readXPaths());
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+		login.typeUsername(utility.ExcelUtils.getDataAt(2, 0));
+		login.typePassword(utility.ExcelUtils.getDataAt(2, 2));
+		login.clickLoginButton();
+		return login;
+	}
+
+	@Test @Ignore
+	public void openLoginPageAndLogedIn() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();
+		
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/home/dashboard");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openRecoveryProfilePage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		start.recoveryProfilePage(driver);
+
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertEquals(driver.getCurrentUrl(),
+				"https://sandbox.2checkout.com/sandbox/noauth/forgotten_password");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlRecoveryProfilePage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openRegistrationPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		start.registrationPage(driver);
+
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://www.2checkout.com/pricing/");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlRegistrationPage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openAccountPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		start.accountPage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/acct/");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlAccountPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openSalesPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		laun();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		start.salesPage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/sales/");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlSalesPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openProductPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		start.productPage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/products/");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProductPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openEditProductPricePage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		start.editProductPricePage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/products/edit_products");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlEditProductPricePage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openCreateNewProductPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		start.createNewProductPage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/products/create_product");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlCreateNewProductPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openDeleteProductPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		start.deleteProductPage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/products/delete_products");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlDeleteProductPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openShippingPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();		
+
+		SoftAssert checkOut = new SoftAssert();
+		start.shippingPage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/shipping/");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlShippingPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openReportsPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();		
+
+		SoftAssert checkOut = new SoftAssert();
+		start.reportsPage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/reports/");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlReportsPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openApiPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		start.apiPage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/api/");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlApiPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openNotificationPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		start.notificationPage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/notifications/");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlNotificationPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test @Ignore
+	public void openHelpPage() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		start.helpPage(driver);
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/help/");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlHelpPage()));
+
+		checkOut.assertAll();
+		utility.ExcelUtils.closeExcell();
+		driver.quit();
+	}
+
+	@Test //PAO
+	public void openCheckOut() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+		
+		SoftAssert checkOut = new SoftAssert();
+		start.checkoutPage(driver);
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlCheckoutPage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+
+	@Test //PAO
+	public void openTermsOfUse() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();
+
+		SoftAssert checkOut = new SoftAssert();
+		start.termsOfUsePage(driver);
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlTermsOfUsePage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+
+	@Test //PAO
+	public void openPrivacyPolicy() {
+		EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+		launchBrowser();		
+
+		SoftAssert checkOut = new SoftAssert();
+		start.privacyPolicyPage(driver);
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlPrivacyPolicyPage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+}

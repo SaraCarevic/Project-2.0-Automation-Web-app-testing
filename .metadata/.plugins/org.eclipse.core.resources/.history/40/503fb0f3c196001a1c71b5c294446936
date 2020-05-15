@@ -1,0 +1,113 @@
+package page.tests;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import page.object.EngineStart;
+import page.object.ReadFile;
+
+public class EngineStartShould {
+	Map<String, String> urls;
+	WebDriver driver;
+	EngineStart start;
+	
+	public void launchBrowserLogIn() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		start = new EngineStart(driver, ReadFile.readUrls());
+		start.logInPage(driver);
+	}
+
+	@Test
+	public void openLoginPage() {
+		launchBrowserLogIn();
+	
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+
+	@Test
+	public void openRecoveryProfilePage() {
+		launchBrowserLogIn();
+		start.recoveryProfilePage(driver);
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://sandbox.2checkout.com/sandbox/noauth/forgotten_password");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlRecoveryProfilePage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+	
+	@Test
+	public void openRegistrationPage() {
+		launchBrowserLogIn();
+		start.registrationPage(driver);
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://www.2checkout.com/pricing/");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlRegistrationPage()));
+		
+		checkOut.assertAll();
+		driver.quit();
+	}
+	
+	
+	
+	@Test
+	public void openCheckOut() {
+		launchBrowserLogIn();
+		start.checkoutPage(driver);
+
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://secure.2checkout.com/cpanel/login.php");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlCheckoutPage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+	
+	@Test
+	public void openTermsOfUse() {
+		launchBrowserLogIn();
+		start.termsOfUsePage(driver);
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://www.2checkout.com/legal/terms/?_ga=2.68427986.274721211.1588585801-1643580948.1588585801");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlTermsOfUsePage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+	
+	@Test
+	public void openPrivacyPolicy() {
+		launchBrowserLogIn();
+		start.privacyPolicyPage(driver);
+
+		SoftAssert checkOut = new SoftAssert();
+
+		checkOut.assertEquals(driver.getCurrentUrl(), "https://www.2checkout.com/legal/privacy/?_ga=2.68427986.274721211.1588585801-1643580948.1588585801");
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlPrivacyPolicyPage()));
+
+		checkOut.assertAll();
+		driver.quit();
+	}
+}

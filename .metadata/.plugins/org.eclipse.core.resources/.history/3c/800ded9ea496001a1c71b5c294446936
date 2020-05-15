@@ -1,0 +1,20 @@
+package page.object;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class privremeno {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Map<String, String> urls = new HashMap<>();
+WebDriver driver = new ChromeDriver();
+		ReadFile.readUrls("SANDBOXLOGINPAGE");
+		StartTheEngine engine = new StartTheEngine(driver, urls);
+		engine.openLoginPage(driver, "SANDBOXLOGINPAGE");
+	}
+
+}

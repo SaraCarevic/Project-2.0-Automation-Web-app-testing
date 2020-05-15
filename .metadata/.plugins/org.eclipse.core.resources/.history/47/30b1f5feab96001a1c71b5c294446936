@@ -1,0 +1,188 @@
+package page.object;
+
+import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
+
+public class EngineStart {
+	WebDriver driver;
+	Map<String, String> urls;
+	
+	public String readWantedUrl(String key) {
+		String url = ReadFile.getUrl(key);
+		return url;
+	}
+	
+	private static final String URLSANDBOXLOGINPAGE = "SANDBOXLOGINPAGE";	
+	private static final String URLFORGOTPASSWORD = "FORGOTPASSWORDPAGE";
+	private static final String URLREGISTRATIONPAGE = "SIGNUPPAGE";
+	
+	private static final String URLPROFILEHOMEPAGE = "PROFILEHOMEPAGE";
+	private static final String URLACCOUNT = "ACCOUNTNAVBARPROFILEPAGE";
+	private static final String URLSALES = "SALESNAVBARPROFILEPAGE";
+	
+	private static final String URLPRODUCTS = "PRODUCTSNAVBARPROFILEPAGE";
+	private static final String URLEDITPRICEPRODUCT = "PRODUCTEDITPRICEPROFILEPAGE";
+	private static final String URLCREATENEWPRODUCT = "CREATENEWPRODUCTPROFILEPAGE";
+	private static final String URLDELETEDPRODUCT = "DELETEDPRODUCTPROFILEPAGE";
+	
+	private static final String URLSHIPPING = "SHIPPINGNAVBARPROFILEPAGE";
+	private static final String URLREPORTS = "REPORTSNAVBARPROFILEPAGE";
+	private static final String URLAPI = "APINAVBARPROFILEPAGE";
+	private static final String URLNOTIFICATIONS = "NOTIFICATIONSNAVBARPROFILEPAGE";
+	private static final String URLHELP = "HELPNAVBARPROFILEPAGE";
+	
+	private static final String URLCHECKOUT = "CHECKOUTPAGE";
+	private static final String URLTERMSOFUSE = "TERMSOFUSEPAGE";
+	private static final String URLPRIVACYPOLICY = "PRIVACYPOLICYPAGE";
+
+	// CONSTRUCTOR
+	public EngineStart(WebDriver driver, Map<String, String> urls) {
+		this.driver = driver;
+		this.urls = urls;
+	}
+
+	// LOG IN open & get URL
+	public void logInPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLSANDBOXLOGINPAGE));
+	}
+	public void getUrlLogInPage() {
+		ReadFile.getUrl(URLSANDBOXLOGINPAGE);
+	}
+	
+	// FORGOT PASSWORD open & get URL
+	public void forgotPasswordPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLFORGOTPASSWORD));
+	}
+	public void getUrlForgotPasswordPage() {
+		ReadFile.getUrl(URLFORGOTPASSWORD);
+	}
+	
+	// REGISTRATION open & get url
+	public void registrationPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLREGISTRATIONPAGE));
+	}
+	public void getUrlRegistrationPage() {
+		ReadFile.getUrl(URLREGISTRATIONPAGE);
+	}
+	
+	// PROFILE HOME open & get URL
+	public void homePage(WebDriver driver) {
+		driver.get(readWantedUrl(URLPROFILEHOMEPAGE));
+	}
+	public void getUrlProfileHomePage() {
+		ReadFile.getUrl(URLPROFILEHOMEPAGE);
+	}
+	
+	// ACCOUNT PAGE open & get URL
+	public void accountPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLACCOUNT));
+	}
+	public void getUrlAccountPage() {
+		ReadFile.getUrl(URLACCOUNT);
+	}
+	
+	// SALES PAGE open & get URL
+	public void salesPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLSALES));
+	}
+	public void getUrlSalesPage() {
+		ReadFile.getUrl(URLSALES);
+	}
+	
+	// PRODUCT PAGE open & get URL
+	public void productsPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLPRODUCTS));
+	}
+	public void getUrlProductPage() {
+		ReadFile.getUrl(URLPRODUCTS);
+	}
+	
+	// PRODUCT PRICE PAGE open & get URL
+	public void editProductPricePage(WebDriver driver) {
+		driver.get(readWantedUrl(URLEDITPRICEPRODUCT));
+	}
+	public void getUrlProductPricePage() {
+		ReadFile.getUrl(URLEDITPRICEPRODUCT);
+	}
+	
+	// CREATE NEW PRODUCT PAGE open & get URL
+	public void createNewProductPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLCREATENEWPRODUCT));
+	}
+	public void getUrlCreateNewProductPage() {
+		ReadFile.getUrl(URLCREATENEWPRODUCT);
+	}
+	
+	// DELETE PRODUCT PAGE open & get URL
+	public void deleteProductPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLDELETEDPRODUCT));
+	}
+	public void getUrlDeleteProductPage() {
+		ReadFile.getUrl(URLDELETEDPRODUCT);
+	}
+	
+	// SHIPPING PAGE open & get URL
+	public void shippingPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLSHIPPING));
+	}
+	public void getUrlShippingPage() {
+		ReadFile.getUrl(URLSHIPPING);
+	}
+	
+	// REPORTS PAGE open & get URL
+	public void reportsPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLREPORTS));
+	}
+	public void getUrlReportsPage() {
+		ReadFile.getUrl(URLREPORTS);
+	}
+	
+	// API open & get URL
+	public void apiPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLAPI));
+	}
+	public void getUrlApiPage() {
+		ReadFile.getUrl(URLAPI);
+	}
+	
+	// NOTIFICATION PAGE open & get URL
+	public void notificationPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLNOTIFICATIONS));
+	}
+	public void getUrlNotificationPage() {
+		ReadFile.getUrl(URLNOTIFICATIONS);
+	}
+	
+	// HELP PAGE open & get URL
+	public void helpPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLHELP));
+	}
+	public void getUrlHelpPage() {
+		ReadFile.getUrl(URLHELP);
+	}
+	
+	// 2CHECKOUT PAGE open & get URL
+	public void checkoutPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLCHECKOUT));
+	}
+	public void getUrlCheckoutPage() {
+		ReadFile.getUrl(URLCHECKOUT);
+	}
+	
+	// TERMS OF USE open & get URL
+	public void termsOfUsePage(WebDriver driver) {
+		driver.get(readWantedUrl(URLTERMSOFUSE));
+	}
+	public void getUrlTermsOfUsePage() {
+		ReadFile.getUrl(URLTERMSOFUSE);
+	}
+	
+	// PRIVACY POLICY open & get URL
+	public void privacyPolicyPage(WebDriver driver) {
+		driver.get(readWantedUrl(URLPRIVACYPOLICY));
+	}
+	public void getUrlPrivacyPolicyPage() {
+		ReadFile.getUrl(URLPRIVACYPOLICY);
+	}
+}

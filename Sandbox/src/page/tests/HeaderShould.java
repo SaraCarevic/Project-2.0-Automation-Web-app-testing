@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import page.object.OpenPage;
-import page.object.PageHeader;
+import page.object.StartHeader;
 import page.object.ReadPaths;
 import page.object.ReadUrls;
 
@@ -31,7 +31,7 @@ public class HeaderShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		
-		PageHeader header = new PageHeader(driver, ReadPaths.readXPaths());
+		StartHeader header = new StartHeader(driver, ReadPaths.readXPaths());
 		checkOut.assertTrue(driver.findElement(By.xpath(header.getLogoPath())).isEnabled());
 		header.clickLogo();
 		checkOut.assertTrue(driver.getCurrentUrl().contains(open.getUrlCheckOut()));
@@ -51,7 +51,7 @@ public class HeaderShould {
 
 		SoftAssert checkOut = new SoftAssert();
 		
-		PageHeader header = new PageHeader(driver, ReadPaths.readXPaths());
+		StartHeader header = new StartHeader(driver, ReadPaths.readXPaths());
 		checkOut.assertTrue(driver.findElement(By.xpath(header.getHelpCenterPath())).isEnabled());
 		header.clickOpenHelpCenter();
 		checkOut.assertTrue(driver.findElement(By.xpath(header.getEmailInTheHelpCenterPath())).isEnabled());

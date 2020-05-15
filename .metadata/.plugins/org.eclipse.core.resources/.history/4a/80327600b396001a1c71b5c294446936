@@ -1,0 +1,6 @@
+package page.object;
+
+public class proba {
+	
+LogIn log = new LogIn();
+}

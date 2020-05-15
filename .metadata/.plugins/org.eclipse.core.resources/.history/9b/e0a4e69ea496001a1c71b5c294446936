@@ -1,0 +1,45 @@
+package page.object;
+
+import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
+
+public class StartTheEngine {
+	WebDriver driver;
+	Map<String, String> urls;
+	
+	private static final String URLSANDBOXLOGINPAGE = "SANDBOXLOGINPAGE";	
+	private static final String URLFORGOTPASSWORD = "FORGOTPASSWORDPAGE";
+	private static final String URLREGISTRATIONPAGE = "SIGNUPPAGE";
+	
+	private static final String URLPROFILEHOMEPAGE = "PROFILEHOMEPAGE";
+	private static final String URLACCOUNT = "ACCOUNTNAVBARPROFILEPAGE";
+	private static final String URLSALES = "SALESNAVBARPROFILEPAGE";
+	
+	private static final String URLPRODUCTS = "PRODUCTSNAVBARPROFILEPAGE";
+	private static final String URLEDITPRICEPRODUCT = "PRODUCTEDITPRICEPROFILEPAGE";
+	private static final String URLCREATENEWPRODUCT = "CREATENEWPRODUCTPROFILEPAGE";
+	private static final String URLDELETEDPRODUCT = "DELETEDPRODUCTPROFILEPAGE";
+	
+	private static final String URLSHIPPING = "SHIPPINGNAVBARPROFILEPAGE";
+	private static final String URLREPORTS = "REPORTSNAVBARPROFILEPAGE";
+	private static final String URLAPI = "APINAVBARPROFILEPAGE";
+	private static final String URLNOTIFICATIONS = "NOTIFICATIONSNAVBARPROFILEPAGE";
+	private static final String URLHELP = "HELPNAVBARPROFILEPAGE";
+	
+	private static final String URLCHECKOUT = "CHECKOUTPAGE";
+	private static final String URLTERMSOFUSE = "TERMSOFUSEPAGE";
+	private static final String URLPRIVACYPOLICY = "PRIVACYPOLICYPAGE";
+
+	// CONSTRUCTOR
+	public StartTheEngine(WebDriver driver, Map<String, String> urls) {
+		this.driver = driver;
+		this.urls = urls;
+	}
+
+	// open page methods
+	public void openLoginPage(WebDriver driver, String key) {
+		driver.get(urls.get(key));
+	}
+
+}
