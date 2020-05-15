@@ -35,3 +35,7 @@
 1589562666043	Rename type 'LoginShould'
 1589565687428	Delete element
 1589566311886	Rename type 'ProfilePageNavBarShould'
+1589570240972	Rename type 'HeaderShould'
+1589570259671	Rename type 'StartHeader'
+1589570790682	Rename type 'RecoveryPageShould'
+1589571534869	Rename type 'ResetPasswordPageShould'

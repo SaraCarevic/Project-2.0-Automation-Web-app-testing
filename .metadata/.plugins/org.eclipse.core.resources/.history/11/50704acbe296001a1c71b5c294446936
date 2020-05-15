@@ -1,0 +1,84 @@
+package page.tests;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import page.object.EngineStart;
+import page.object.ReadFile;
+import page.object.ResetPassword;
+
+public class ResetPasswordPageShould {
+	WebDriver driver;
+	EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+
+	public EngineStart launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		start.logInPage(driver);
+		return start;
+	}
+	
+	@Test
+	public void haveElements() throws InterruptedException {
+		launchBrowser();
+		Thread.sleep(5000);
+		start.recoveryProfilePage(driver);
+
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlRecoveryProfilePage());		
+		ResetPassword recovery = new ResetPassword(driver, ReadFile.readXPaths());
+		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathUsername())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathEmail())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathLogIn())).isEnabled());
+		
+		checkOut.assertAll();
+		driver.close();
+	}
+	
+	@Test
+	public void notRecoverWithoutUsername() throws InterruptedException {
+		launchBrowser();
+		Thread.sleep(5000);
+		start.recoveryProfilePage(driver);	
+	
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlRecoveryProfilePage());
+		
+		ResetPassword recovery = new ResetPassword(driver, ReadFile.readXPaths());
+		recovery.clickSendEmail();
+		checkOut.assertFalse(driver.findElement(By.xpath(recovery.getXPathConfirmLoginReset())).isEnabled());
+		
+		checkOut.assertAll();
+		driver.close();
+	}
+
+	@Test
+	public void recoverProfile() throws InterruptedException {
+		launchBrowser();
+		Thread.sleep(5000);
+		start.recoveryProfilePage(driver);	
+
+		SoftAssert checkOut = new SoftAssert();
+		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlRecoveryProfilePage());
+		
+		ResetPassword recovery = new ResetPassword(driver, ReadFile.readXPaths());
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+		recovery.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathEmail())).isEnabled());
+		recovery.clickSendEmail();
+		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathConfirmLoginReset())).isEnabled());
+		
+		checkOut.assertAll();
+		driver.close();
+	}
+}

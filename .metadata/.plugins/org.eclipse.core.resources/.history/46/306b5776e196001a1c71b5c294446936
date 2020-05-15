@@ -1,0 +1,83 @@
+package page.tests;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import page.object.EngineStart;
+import page.object.LogIn;
+import page.object.NavigationBar;
+import page.object.ReadFile;
+import page.object.StartHeaderPage;
+
+public class StartHeaderPageShould {
+	WebDriver driver;
+	EngineStart start = new EngineStart(driver, ReadFile.readUrls());
+	StartHeaderPage header = new StartHeaderPage(driver, ReadFile.readXPaths());
+
+	public EngineStart launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		start.logInPage(driver);
+		return start;
+	}
+	
+	public LogIn userLogedIn() {
+		LogIn login = new LogIn(driver, ReadFile.readXPaths());
+		utility.ExcelUtils.setExcell("src\\SignUp_data.xlsx");
+		utility.ExcelUtils.setWorkSheet(0);
+		login.typeUsername(utility.ExcelUtils.getDataAt(1, 0));
+		login.typePassword(utility.ExcelUtils.getDataAt(1, 2));
+		login.clickLoginButton();
+		return login;
+	}
+
+	public NavigationBar logOut() {
+		NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
+		profile.clickAccountAvatar();
+		profile.clickLogOut();
+		return profile;
+	}
+	
+	@Test
+	public void haveLogo() {
+		launchBrowser();
+		//userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		
+		StartHeaderPage header = new StartHeaderPage(driver, ReadFile.readXPaths());
+		checkOut.assertTrue(driver.findElement(By.xpath(header.getLogoPath())).isEnabled());
+		header.clickLogo();
+		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlCheckoutPage()));
+		
+		checkOut.assertAll();
+		driver.close();
+	}
+	
+	@Test
+	public void haveHelpIconItems() {
+		launchBrowser();
+		//userLogedIn();
+
+		SoftAssert checkOut = new SoftAssert();
+		
+		StartHeaderPage header = new StartHeaderPage(driver, ReadFile.readXPaths());
+		checkOut.assertTrue(driver.findElement(By.xpath(header.getHelpCenterPath())).isEnabled());
+		header.clickOpenHelpCenter();
+		checkOut.assertTrue(driver.findElement(By.xpath(header.getEmailInTheHelpCenterPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(header.getSupportInTheHelpCenterPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(header.getContactUsInTheHelpCenterPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(header.getKnowledgeBaseInTheHelpCenterPath())).isEnabled());
+		checkOut.assertTrue(driver.findElement(By.xpath(header.getDocumentationInTheHelpCenterPath())).isEnabled());
+		
+		checkOut.assertAll();
+		driver.close();
+	}
+}
