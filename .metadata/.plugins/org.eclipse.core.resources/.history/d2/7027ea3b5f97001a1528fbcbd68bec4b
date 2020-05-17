@@ -1,0 +1,30 @@
+package page.tests;
+
+import java.util.Map;
+
+import org.testng.annotations.Test;
+
+import page.object.ReadFile;
+
+public class ReadFileShould {
+	@Test
+	public void readTxtPathsFile() {
+		Map<String, String> xPaths = ReadFile.readXPaths();
+		for (String name : xPaths.keySet()) {
+			String key = name.toString();
+			String value = xPaths.get(name).toString();
+			System.out.println(key + " " + value);
+		}
+
+	}
+
+	@Test
+	public void readTxtUrlsFile() {
+		Map<String, String> urls = ReadFile.readUrls();
+		for (String name : urls.keySet()) {
+			String key = name.toString();
+			String value = urls.get(name).toString();
+			System.out.println(key + " " + value);
+		}
+	}
+}

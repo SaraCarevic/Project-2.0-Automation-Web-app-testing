@@ -1,0 +1,23 @@
+package page.tests;
+
+import java.util.Map;
+
+import org.testng.annotations.Test;
+
+import page.object.ReadFile;
+
+public class ReadFileShould {
+  @Test
+  public void readTxtPathsFile() {
+	 // Map<String,String> xPaths = 
+	  ReadFile.readXPaths();
+	 /* for (String i : xPaths.keySet()) {
+		  System.out.println(xPaths.get(i));
+		}*/
+  }
+  
+  @Test
+  public void readTxtUrlsFile() {
+	  
+  }
+}

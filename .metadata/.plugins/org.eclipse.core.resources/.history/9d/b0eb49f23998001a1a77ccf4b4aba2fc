@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="TestingWebApp">
+	<test name="Test">
+		<classes>
+			<class name="page.tests.EngineStartShould"></class>
+			<class name="page.tests.StartHeaderPageShould"></class>
+			<class name="page.tests.RegistrationShould"></class>
+			<class name="page.tests.LogInShould"></class>
+			<class name="page.tests.NavigationBarShould"></class>
+			<class name="page.tests.ProductPageShould"></class>
+			<class name="page.tests.ResetPasswordShould"></class>
+		</classes>
+	</test>
+</suite>
