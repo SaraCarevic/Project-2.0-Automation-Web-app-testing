@@ -1,50 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="TestingWebApp">
-	<test name="TestReadFile">
+	<test name="Test">
 		<classes>
 			<class name="page.tests.ReadFileShould"></class>
-		</classes>
-	</test>
-	<test name="TestEngineStart">
-		<classes>
 			<class name="page.tests.EngineStartShould"></class>
-		</classes>
-	</test>
-	<test name="TestStartHeader">
-		<classes>
 			<class name="page.tests.StartHeaderPageShould"></class>
-		</classes>
-	</test>
-	<test name="TestRegistrationForm">
-		<classes>
 			<class name="page.tests.RegistrationShould"></class>
-		</classes>
-	</test>
-	<test name="TestLogInForm">
-		<classes>
 			<class name="page.tests.LogInShould"></class>
-		</classes>
-	</test>
-	<test name="TestHomeNavigationBar">
-		<classes>
 			<class name="page.tests.NavigationBarShould"></class>
-		</classes>
-	</test>
-	<test name="TestHomeProductPage">
-		<classes>
 			<class name="page.tests.ProductPageShould"></class>
-		</classes>
-	</test>
-	<test name="TestResetPassword">
-		<classes>
 			<class name="page.tests.ResetPasswordShould"></class>
 		</classes>
 	</test>
 </suite>
-			
-			
-			
-			
-			
-			
-			

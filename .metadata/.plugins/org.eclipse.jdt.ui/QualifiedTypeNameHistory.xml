@@ -41,4 +41,5 @@
     <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
     <fullyQualifiedTypeName name="org.testng.asserts.SoftAssert"/>
     <fullyQualifiedTypeName name="org.testng.annotations.Ignore"/>
+    <fullyQualifiedTypeName name="org.testng.annotations.AfterTest"/>
 </qualifiedTypeNameHistroy>

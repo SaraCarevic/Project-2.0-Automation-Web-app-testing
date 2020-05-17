@@ -25,10 +25,10 @@ public class ResetPasswordShould {
 		return start;
 	}
 	
-	@Test // weak, manual testing - the page does not load correctly, it is few seconds late (BUG)
+	@Test // weak, manual testing - the page does not load correctly, it is 30 seconds late
 	public void haveElements() throws InterruptedException {
 		launchBrowser();
-		Thread.sleep(5000); // doesn't always solve the problem of page delays
+		Thread.sleep(5000);
 		start.recoveryProfilePage(driver);
 		Thread.sleep(5000);
 
@@ -43,7 +43,7 @@ public class ResetPasswordShould {
 		driver.close();
 	}
 	
-	@Test  // weak, manual testing - the page does not load correctly, it is few seconds late
+	@Test  // weak, manual testing - the page does not load correctly, it is 30 seconds late
 	public void notRecoverWithoutUsername() throws InterruptedException {
 		launchBrowser();
 		Thread.sleep(5000);
@@ -61,7 +61,7 @@ public class ResetPasswordShould {
 		driver.close();
 	}
 
-	@Test // weak, manual testing - the page does not load correctly, it is few seconds late
+	@Test // weak, manual testing - the page does not load correctly, it is 30 seconds late
 	public void recoverProfile() throws InterruptedException {
 		launchBrowser();
 		Thread.sleep(5000);
