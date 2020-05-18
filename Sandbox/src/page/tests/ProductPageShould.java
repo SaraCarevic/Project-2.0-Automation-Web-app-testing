@@ -1,9 +1,11 @@
 package page.tests;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -38,16 +40,16 @@ public class ProductPageShould {
 		return login;
 	}
 
-	@Test (priority = 1)
+	@Test(priority = 1)
 	public void createNewProduct() {
 		launchBrowser();
 		userLogedIn();
-		
+
 		NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
 		profile.clickProductsNav();
 		ProductPage product = new ProductPage(driver, ReadFile.readXPaths());
 		product.clickAddNewProductBtn();
-		
+
 		SoftAssert checkOut = new SoftAssert();
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlCreateNewProductPage());
 
@@ -60,21 +62,21 @@ public class ProductPageShould {
 		product.typeProductPrice(utility.ExcelUtils.getDataAt(1, 4));
 		product.typeApprovedUrl(utility.ExcelUtils.getDataAt(1, 5));
 		product.clickSubmitBtn();
-		
+
 		checkOut.assertTrue(driver.findElement(By.xpath(profile.getUpdateSuccessfulPath())).isDisplayed());
 
 		checkOut.assertAll();
 	}
 
-	@Test (priority = 2)
+	@Test(priority = 2)
 	public void deleteProduct() throws InterruptedException {
 		launchBrowser();
 		userLogedIn();
-		
+
 		NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
 		profile.clickProductsNav();
 		ProductPage product = new ProductPage(driver, ReadFile.readXPaths());
-		
+
 		SoftAssert checkOut = new SoftAssert();
 		checkOut.assertTrue(driver.findElement(By.xpath(product.getCheckboxProductPath())).isDisplayed());
 		product.clickCheckboxProduct();
@@ -84,22 +86,22 @@ public class ProductPageShould {
 		product.clickSubmitBtn();
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlDeleteProductPage());
 		checkOut.assertTrue(driver.findElement(By.xpath("//td[contains(text(),'Deleted')]")).isDisplayed());
-		
+
 		Thread.sleep(5000);
 
 		checkOut.assertAll();
 	}
- 
-	@Test (priority = 3) 
+
+	@Test(priority = 3)
 	public void createMultipleNewProduct() throws InterruptedException {
 		launchBrowser();
 		userLogedIn();
-		
+
 		NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
 		profile.clickProductsNav();
 		ProductPage product = new ProductPage(driver, ReadFile.readXPaths());
 		product.clickAddNewProductBtn();
-		
+
 		SoftAssert checkOut = new SoftAssert();
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlCreateNewProductPage());
 
@@ -123,26 +125,34 @@ public class ProductPageShould {
 		}
 		checkOut.assertAll();
 	}
-	
-	@Test (priority = 4) 
-	public void increasePrice(){
+
+	@Test(priority = 4)
+	public void increasePrice() {
 		launchBrowser();
-		userLogedIn();
-		
+		userLogedIn();		
+
 		NavigationBar profile = new NavigationBar(driver, ReadFile.readXPaths());
 		profile.clickProductsNav();
 		ProductPage product = new ProductPage(driver, ReadFile.readXPaths());
-		product.clickEditProductBtn();		
-		product.increasePrice(10.00);	
+		product.clickEditProductBtn();
+
+		List<String> oldPrice = product.getPriceValue();
+		System.out.println("Nove cene");
+		product.increasePrice(10.00);
 		
-		SoftAssert checkOut = new SoftAssert();	
+		SoftAssert checkOut = new SoftAssert();
 		checkOut.assertTrue(driver.findElement(By.xpath(product.getSaveProductChangesBtnPath())).isDisplayed());
 		product.clickSaveProductChangesBtn();
+
+		List<String> newPrice = product.getPriceValue();
+		for (int i = 0; i < oldPrice.size(); i++) {
+			checkOut.assertNotEquals(oldPrice.get(i), newPrice.get(i));
+		}
 		checkOut.assertTrue(driver.findElement(By.xpath(product.getUpdateSucceedPath())).isDisplayed());
-		
+
 		checkOut.assertAll();
 	}
-	
+
 	@AfterMethod
 	public void close() {
 		utility.ExcelUtils.closeExcell();

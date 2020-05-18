@@ -1,0 +1,5 @@
+			WebElement element = itr.next();
+			String oldPrice = itr.next().getAttribute("value");
+			double incPrice = increase + Double.parseDouble(oldPrice);
+			element.clear();
+			element.sendKeys(String.valueOf(incPrice));

@@ -1,5 +1,6 @@
 package page.object;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -158,16 +159,15 @@ public class ProductPage {
 	}
 
 	public void increasePrice(Double increase) {
-		  List<WebElement> products = driver.findElements(By.xpath("//*[contains(@name, 'price')]"));
-		  Iterator<WebElement> itr = products.iterator();
-		  while(itr.hasNext()){
-		    WebElement element = itr.next();
-		    String oldPrice = itr.next().getAttribute("value");
-		    double incPrice = increase + Double.parseDouble(oldPrice);
-		    System.out.println(incPrice);
-		    element.clear();
-		   element.sendKeys(String.valueOf(incPrice));
-		  }	 
+		List<WebElement> products = driver.findElements(By.xpath("//*[contains(@name, 'price')]"));
+		Iterator<WebElement> itr = products.iterator();
+		while (itr.hasNext()) {
+			WebElement element = itr.next();
+			String oldPrice = itr.next().getAttribute("value");
+			double incPrice = increase + Double.parseDouble(oldPrice);
+			element.clear();
+			element.sendKeys(String.valueOf(incPrice));
+		}
 	}
 
 	// save product changes
@@ -195,5 +195,21 @@ public class ProductPage {
 				anElement.click();
 			}
 		}
+	}
+
+	// get XPaths for edited price
+	public List<String> getPriceValue() {
+		List<WebElement> elements = driver.findElements(By.xpath("//*[contains(@name, 'price')]"));
+		Iterator<WebElement> itr = elements.iterator();
+		List<String> prices = new ArrayList<>();
+		while (itr.hasNext()) {
+			//WebElement element = itr.next();
+			String oldPrice = itr.next().getAttribute("value");
+			prices.add(oldPrice);
+			//double incPrice = increase + Double.parseDouble(oldPrice);
+			//element.clear();
+			//element.sendKeys(String.valueOf(incPrice));
+		}
+		return prices;
 	}
 }

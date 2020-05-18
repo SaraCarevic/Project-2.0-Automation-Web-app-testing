@@ -5,8 +5,8 @@
     <classes>
       <class name="page.tests.ProductPageShould">
         <methods>
+          <include name="increasePrice"/>
           <include name="close"/>
-          <include name="createMultipleNewProduct"/>
         </methods>
       </class> <!-- page.tests.ProductPageShould -->
     </classes>
