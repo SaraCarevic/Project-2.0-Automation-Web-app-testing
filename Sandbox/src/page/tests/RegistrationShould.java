@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -57,8 +58,6 @@ public class RegistrationShould {
 		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 		
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 	
 	@Test
@@ -78,8 +77,6 @@ public class RegistrationShould {
 		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 		
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 	
 	@Test
@@ -99,8 +96,6 @@ public class RegistrationShould {
 		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 		
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 	
 	@Test
@@ -120,8 +115,6 @@ public class RegistrationShould {
 		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 		
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test
@@ -141,8 +134,6 @@ public class RegistrationShould {
 		checkOut.assertFalse(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 		
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 	
 	@Test
@@ -163,8 +154,6 @@ public class RegistrationShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test
@@ -201,6 +190,10 @@ public class RegistrationShould {
 
 		}
 		checkOut.assertAll();
+	}
+	
+	@AfterMethod
+	public void close() {
 		utility.ExcelUtils.closeExcell();
 		driver.quit();
 	}

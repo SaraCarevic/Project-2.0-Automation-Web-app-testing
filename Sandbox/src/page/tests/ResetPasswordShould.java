@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -40,7 +41,6 @@ public class ResetPasswordShould {
 		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathLogIn())).isEnabled());
 		
 		checkOut.assertAll();
-		driver.close();
 	}
 	
 	@Test  // weak, manual testing - the page does not load correctly, it is few seconds late
@@ -58,7 +58,6 @@ public class ResetPasswordShould {
 		checkOut.assertFalse(driver.findElement(By.xpath(recovery.getXPathConfirmLoginReset())).isEnabled());
 		
 		checkOut.assertAll();
-		driver.close();
 	}
 
 	@Test // weak, manual testing - the page does not load correctly, it is few seconds late
@@ -80,6 +79,10 @@ public class ResetPasswordShould {
 		checkOut.assertTrue(driver.findElement(By.xpath(recovery.getXPathConfirmLoginReset())).isEnabled());
 		
 		checkOut.assertAll();
-		driver.close();
+	}
+	
+	@AfterMethod
+	public void close() {
+		driver.quit();
 	}
 }

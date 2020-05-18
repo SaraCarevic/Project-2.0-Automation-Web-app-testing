@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -45,7 +46,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProfileHomePage()));
 
 		checkOut.assertAll();
-		driver.quit();
 	}
 	
 	@Test 
@@ -58,7 +58,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlFailedLogInPage()));
 
 		checkOut.assertAll();
-		driver.quit();
 	}
 
 	@Test
@@ -71,7 +70,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlRecoveryProfilePage()));
 
 		checkOut.assertAll();
-		driver.quit();
 	}
 
 	@Test
@@ -84,7 +82,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlRegistrationPage()));
 
 		checkOut.assertAll();
-		driver.quit();
 	}
 
 	@Test 
@@ -98,8 +95,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlAccountPage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test
@@ -113,8 +108,7 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlSalesPage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
+
 	}
 
 	@Test 
@@ -128,8 +122,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlProductPage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test 
@@ -143,8 +135,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlEditProductPricePage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test 
@@ -158,8 +148,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlCreateNewProductPage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test 
@@ -173,8 +161,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlDeleteProductPage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test 
@@ -188,8 +174,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlShippingPage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test 
@@ -203,8 +187,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlReportsPage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test 
@@ -218,8 +200,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlApiPage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test 
@@ -233,8 +213,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlNotificationPage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test 
@@ -248,8 +226,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlHelpPage()));
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test 
@@ -261,7 +237,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlCheckoutPage()));
 
 		checkOut.assertAll();
-		driver.quit();
 	}
 
 	@Test 
@@ -273,7 +248,6 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlTermsOfUsePage()));
 
 		checkOut.assertAll();
-		driver.quit();
 	}
 
 	@Test 
@@ -285,6 +259,10 @@ public class EngineStartShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlPrivacyPolicyPage()));
 
 		checkOut.assertAll();
+	}
+	
+	@AfterMethod
+	public void close() {
 		driver.quit();
 	}
 }

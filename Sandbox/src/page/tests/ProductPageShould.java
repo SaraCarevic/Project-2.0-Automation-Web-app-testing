@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -63,8 +64,6 @@ public class ProductPageShould {
 		checkOut.assertTrue(driver.findElement(By.xpath(profile.getUpdateSuccessfulPath())).isDisplayed());
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 
 	@Test (priority = 2)
@@ -89,8 +88,6 @@ public class ProductPageShould {
 		Thread.sleep(5000);
 
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
  
 	@Test (priority = 3) 
@@ -125,8 +122,6 @@ public class ProductPageShould {
 			}
 		}
 		checkOut.assertAll();
-		utility.ExcelUtils.closeExcell();
-		driver.quit();
 	}
 	
 	@Test (priority = 4) 
@@ -146,6 +141,11 @@ public class ProductPageShould {
 		checkOut.assertTrue(driver.findElement(By.xpath(product.getUpdateSucceedPath())).isDisplayed());
 		
 		checkOut.assertAll();
+	}
+	
+	@AfterMethod
+	public void close() {
+		utility.ExcelUtils.closeExcell();
 		driver.quit();
 	}
 }

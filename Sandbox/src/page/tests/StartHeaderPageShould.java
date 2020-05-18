@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -36,7 +37,6 @@ public class StartHeaderPageShould {
 		checkOut.assertTrue(driver.getCurrentUrl().contains(start.getUrlCheckoutPage()));
 		
 		checkOut.assertAll();
-		driver.close();
 	}
 	
 	@Test
@@ -54,6 +54,10 @@ public class StartHeaderPageShould {
 		checkOut.assertTrue(driver.findElement(By.xpath(header.getDocumentationInTheHelpCenterPath())).isEnabled());
 		
 		checkOut.assertAll();
-		driver.close();
+	}
+	
+	@AfterMethod
+	public void close() {
+		driver.quit();
 	}
 }

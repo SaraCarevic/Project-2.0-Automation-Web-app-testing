@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -65,7 +66,6 @@ public class NavigationBarShould {
 		checkOut.assertTrue(driver.findElement(By.xpath(profile.getLogOutPath())).isEnabled());
 
 		checkOut.assertAll();
-		driver.close();
 	}
 
 	@Test
@@ -80,7 +80,6 @@ public class NavigationBarShould {
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlProfileHomePage());
 
 		checkOut.assertAll();
-		driver.close();
 	}
 
 	@Test
@@ -96,7 +95,6 @@ public class NavigationBarShould {
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlAccountPage());
 
 		checkOut.assertAll();
-		driver.close();
 	}
 
 	@Test
@@ -112,7 +110,6 @@ public class NavigationBarShould {
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlSalesPage());
 
 		checkOut.assertAll();
-		driver.close();
 	}
 
 	@Test
@@ -127,7 +124,6 @@ public class NavigationBarShould {
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlProductPage());
 
 		checkOut.assertAll();
-		driver.close();
 	}
 
 	@Test
@@ -142,7 +138,6 @@ public class NavigationBarShould {
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlShippingPage());
 
 		checkOut.assertAll();
-		driver.close();
 	}
 
 	@Test
@@ -157,7 +152,6 @@ public class NavigationBarShould {
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlReportsPage());
 
 		checkOut.assertAll();
-		driver.close();
 	}
 
 	@Test
@@ -172,7 +166,6 @@ public class NavigationBarShould {
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlApiPage());
 
 		checkOut.assertAll();
-		driver.close();
 	}
 
 	@Test
@@ -187,7 +180,7 @@ public class NavigationBarShould {
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlNotificationPage());
 
 		checkOut.assertAll();
-		driver.close();
+
 	}
 
 	@Test //test failed (BUG), click on button help doesn't lead to correct page (lead to support page)
@@ -202,7 +195,6 @@ public class NavigationBarShould {
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlHelpPage());
 
 		checkOut.assertAll();
-		driver.close();
 	}
 
 	@Test
@@ -216,6 +208,10 @@ public class NavigationBarShould {
 		checkOut.assertEquals(driver.getCurrentUrl(), start.getUrlLogInPage());
 
 		checkOut.assertAll();
-		driver.close();
+	}
+	
+	@AfterMethod
+	public void close() {
+		driver.quit();
 	}
 }
