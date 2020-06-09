@@ -14,4 +14,4 @@ Products cart - Test the addition of 5 products - only basic information is requ
 
 Bug Report - Write a bug report and fill it out using information found through automatic and manual testing.
 
-Bonus requirement - Create one test suite that will run tests from all TestNG classes. Instead of a Java project, create a Maven project.
+Bonus requirement - Create one test suite that will run tests from all TestNG classes.
